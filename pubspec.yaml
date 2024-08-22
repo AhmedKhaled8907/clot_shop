@@ -19,6 +19,8 @@ dependencies:
   firebase_auth:
   cloud_firestore:
   animate_do: ^3.3.4
+  dartz: ^0.10.1
+  get_it: ^7.7.0
 
 dev_dependencies:
   flutter_test:

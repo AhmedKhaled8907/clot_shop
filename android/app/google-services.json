@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "848750128813",
+    "project_id": "fir-auth-1338e",
+    "storage_bucket": "fir-auth-1338e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:848750128813:android:3627ef5c897985b9682024",
+        "android_client_info": {
+          "package_name": "com.example.clot_shop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "848750128813-q8aio2ub8p4m2fsq8f8eedorn6ptd8f2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.clot_shop",
+            "certificate_hash": "8d4170ab4ef0c23b3a672e5cc0a77a4e38fa7254"
+          }
+        },
+        {
+          "client_id": "848750128813-1h25ga4nj0ii5cor36e02lfupntkp0m3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQSEYB-a5TR5Gi3mTZeiPM9lSS-cs6uFw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "848750128813-1h25ga4nj0ii5cor36e02lfupntkp0m3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "848750128813-0bmv2t4hpjqb008816ot7dikm2rgqfa5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterFirebaseAuth.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

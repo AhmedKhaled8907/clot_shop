@@ -15,6 +15,10 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter_svg: ^2.0.10+1
   flutter_bloc: ^8.1.6
+  firebase_core: ^2.24.2
+  firebase_auth:
+  cloud_firestore:
+  animate_do: ^3.3.4
 
 dev_dependencies:
   flutter_test:

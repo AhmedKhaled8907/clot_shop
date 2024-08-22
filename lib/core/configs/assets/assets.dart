@@ -50,6 +50,10 @@ class Assets {
   /// assets/vectors/email_sending.svg
   static const String vectorsEmailSending = "assets/vectors/email_sending.svg";
 
+  /// Assets for vectorsForgotPassword
+  /// assets/vectors/forgot_password.svg
+  static const String vectorsForgotPassword = "assets/vectors/forgot_password.svg";
+
   /// Assets for vectorsLogo
   /// assets/vectors/logo.svg
   static const String vectorsLogo = "assets/vectors/logo.svg";

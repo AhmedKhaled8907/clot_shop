@@ -80,7 +80,7 @@ class SigninPage extends StatelessWidget {
       onTap: () {
         AppNavigator.push(
           context,
-          const ForgotPassword(),
+          const ForgotPasswordPage(),
         );
       },
       child: const Text(

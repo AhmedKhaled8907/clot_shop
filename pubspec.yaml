@@ -42,9 +42,8 @@ flutter:
         - asset: assets/fonts/CircularStd-Regular.ttf
           weight: 400
 
-
 flutter_assets:
   assets_path: assets/
-  output_path: lib/core/configs
+  output_path: lib/core/configs/assets
   filename: assets.dart
   field_prefix:

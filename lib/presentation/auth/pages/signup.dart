@@ -1,15 +1,13 @@
-import 'package:clot_shop/common/widgets/button/logo_signin_button.dart';
-import 'package:clot_shop/presentation/auth/pages/forgot_password.dart';
-import 'package:clot_shop/presentation/auth/pages/signup.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common/helper/navigator/app_navigator.dart';
 import '../../../common/widgets/button/basic_app_button.dart';
+import '../../../common/widgets/button/logo_signin_button.dart';
 import '../../../core/configs/assets/assets.dart';
 
-class SigninPage extends StatelessWidget {
-  const SigninPage({super.key});
+class SignupPage extends StatelessWidget {
+  const SignupPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,19 +26,21 @@ class SigninPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 36),
-                _signinText(context),
+                const SizedBox(height: 24),
+                _signupText(context),
+                const SizedBox(height: 20),
+                _firstNameField(context),
+                const SizedBox(height: 20),
+                _lastNameField(context),
                 const SizedBox(height: 20),
                 _emailField(context),
                 const SizedBox(height: 20),
                 _passwordField(context),
-                const SizedBox(height: 20),
-                _forgotPassword(context),
                 const SizedBox(height: 36),
-                _signinButton(context),
-                const SizedBox(height: 36),
+                _signupButton(context),
+                const SizedBox(height: 24),
                 _orDivider(),
-                const SizedBox(height: 36),
+                const SizedBox(height: 24),
                 _continueWithButtons(context),
                 const Expanded(
                   child: SizedBox(),
@@ -54,10 +54,27 @@ class SigninPage extends StatelessWidget {
     );
   }
 
-  Widget _signinText(BuildContext context) {
+  Widget _signupText(BuildContext context) {
     return const Text(
-      'Sign in',
-      style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+      'Sign up',
+      style: TextStyle(
+        fontSize: 32,
+        fontWeight: FontWeight.bold,
+      ),
+    );
+  }
+
+  Widget _firstNameField(BuildContext context) {
+    return const TextField(
+      decoration: InputDecoration(hintText: 'First Name'),
+      keyboardType: TextInputType.text,
+    );
+  }
+
+  Widget _lastNameField(BuildContext context) {
+    return const TextField(
+      decoration: InputDecoration(hintText: 'Last Name'),
+      keyboardType: TextInputType.text,
     );
   }
 
@@ -71,29 +88,11 @@ class SigninPage extends StatelessWidget {
   Widget _passwordField(BuildContext context) {
     return const TextField(
       decoration: InputDecoration(hintText: 'Password'),
-      keyboardType: TextInputType.emailAddress,
+      keyboardType: TextInputType.visiblePassword,
     );
   }
 
-  Widget _forgotPassword(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        AppNavigator.push(
-          context,
-          const ForgotPassword(),
-        );
-      },
-      child: const Text(
-        'Forgot password?',
-        style: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.w500,
-        ),
-      ),
-    );
-  }
-
-  Widget _signinButton(BuildContext context) {
+  Widget _signupButton(BuildContext context) {
     return BasicAppButton(
       onPressed: () {
         AppNavigator.push(
@@ -101,7 +100,7 @@ class SigninPage extends StatelessWidget {
           const SignupPage(),
         );
       },
-      title: 'Sign in',
+      title: 'Sign up',
     );
   }
 
@@ -177,15 +176,12 @@ class SigninPage extends StatelessWidget {
       child: RichText(
         text: TextSpan(
           children: [
-            const TextSpan(text: "Don't you have an account? "),
+            const TextSpan(text: "Have an account Already? "),
             TextSpan(
-              text: 'Sign up',
+              text: 'Sign in',
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  AppNavigator.push(
-                    context,
-                    const SignupPage(),
-                  );
+                  Navigator.pop(context);
                 },
               style: const TextStyle(
                 fontWeight: FontWeight.bold,

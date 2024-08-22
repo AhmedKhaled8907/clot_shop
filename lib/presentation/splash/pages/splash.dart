@@ -1,3 +1,4 @@
+import 'package:clot_shop/common/helper/navigator/app_navigator.dart';
 import 'package:clot_shop/core/configs/assets/assets.dart';
 import 'package:clot_shop/core/configs/theme/app_colors.dart';
 import 'package:clot_shop/presentation/splash/splash_cubit/splash_cubit.dart';
@@ -15,10 +16,9 @@ class SplashPage extends StatelessWidget {
     return BlocListener<SplashCubit, SplashState>(
       listener: (context, state) {
         if (state is UnAuthenticated) {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-              builder: (context) => const SigninPage(),
-            ),
+          AppNavigator.pushReplacement(
+            context,
+            const SigninPage(),
           );
         }
       },

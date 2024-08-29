@@ -1,3 +1,4 @@
+import 'package:clot_shop/core/configs/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class BasicAppButton extends StatelessWidget {
@@ -6,19 +7,22 @@ class BasicAppButton extends StatelessWidget {
   final Widget? content;
   final double? height;
   final double? width;
-  const BasicAppButton(
-      {required this.onPressed,
-      this.title = '',
-      this.height,
-      this.width,
-      this.content,
-      super.key});
+  final Color color;
+  const BasicAppButton({
+    required this.onPressed,
+    this.title = '',
+    this.height,
+    this.width,
+    this.content,
+    super.key,  this.color = AppColors.primary,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
+        backgroundColor: color,
         minimumSize: Size(
           width ?? MediaQuery.of(context).size.width,
           height ?? 50,

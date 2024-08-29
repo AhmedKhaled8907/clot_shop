@@ -6,6 +6,7 @@ import '../models/user_creation_req.dart';
 
 abstract class AuthFirebaseSource {
   Future<Either> signup(UserCreationReq user);
+  Future<Either> getAges();
 }
 
 class AuthFirebaseSourceImpl implements AuthFirebaseSource {
@@ -38,6 +39,22 @@ class AuthFirebaseSourceImpl implements AuthFirebaseSource {
         message = 'The email is badly formatted.';
       }
       return Left(message);
+    }
+  }
+
+  @override
+  Future<Either> getAges() async {
+    try {
+      var returnedData = await fireStore
+          .collection('ages')
+          .orderBy(
+            descending: false,
+            'value',
+          )
+          .get();
+      return Right(returnedData.docs);
+    } catch (e) {
+      return const Left('Try again later');
     }
   }
 }

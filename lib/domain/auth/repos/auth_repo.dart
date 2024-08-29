@@ -3,4 +3,5 @@ import 'package:dartz/dartz.dart';
 
 abstract class AuthRepo {
   Future<Either> signup(UserCreationReq user);
+  Future<Either> getAges();
 }

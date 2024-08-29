@@ -21,35 +21,37 @@ class SigninPage extends StatelessWidget {
           left: 24,
           right: 24,
         ),
-        child: CustomScrollView(slivers: [
-          SliverFillRemaining(
-            hasScrollBody: false,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(height: 36),
-                _signinText(context),
-                const SizedBox(height: 20),
-                _emailField(context),
-                const SizedBox(height: 20),
-                _passwordField(context),
-                const SizedBox(height: 20),
-                _forgotPassword(context),
-                const SizedBox(height: 36),
-                _signinButton(context),
-                const SizedBox(height: 36),
-                _orDivider(),
-                const SizedBox(height: 36),
-                _continueWithButtons(context),
-                const Expanded(
-                  child: SizedBox(),
-                ),
-                _createAccount(context)
-              ],
+        child: CustomScrollView(
+          slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 36),
+                  _signinText(context),
+                  const SizedBox(height: 20),
+                  _emailField(context),
+                  const SizedBox(height: 20),
+                  _passwordField(context),
+                  const SizedBox(height: 20),
+                  _forgotPassword(context),
+                  const SizedBox(height: 36),
+                  _signinButton(context),
+                  const SizedBox(height: 36),
+                  _orDivider(),
+                  const SizedBox(height: 36),
+                  _continueWithButtons(context),
+                  const Expanded(
+                    child: SizedBox(),
+                  ),
+                  _createAccount(context)
+                ],
+              ),
             ),
-          ),
-        ]),
+          ],
+        ),
       ),
     );
   }

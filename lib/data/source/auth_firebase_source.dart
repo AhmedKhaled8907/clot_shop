@@ -64,10 +64,17 @@ class AuthFirebaseSourceImpl implements AuthFirebaseSource {
   @override
   Future<Either> signin(UserInfoModel user) async {
     try {
-      await auth.signInWithEmailAndPassword(
+      var returnedData = await auth.signInWithEmailAndPassword(
         email: user.email!,
         password: user.password!,
       );
+
+      // to make the password change in the database if the user resets the password
+      var uid = returnedData.user!.uid;
+      fireStore.collection('users').doc(uid).update({
+        'password': user.password,
+      });
+
       return const Right('Signed In was Successful');
     } on FirebaseAuthException catch (e) {
       String message = '';

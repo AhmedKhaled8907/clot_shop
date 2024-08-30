@@ -17,11 +17,11 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
+  final _formKey = GlobalKey<FormState>();
   late TextEditingController firstNameController;
   late TextEditingController lastNameController;
   late TextEditingController emailController;
   late TextEditingController passwordController;
-  final _formKey = GlobalKey<FormState>();
   late FocusNode emailFocusNode;
   late FocusNode passwordFocusNode;
   late FocusNode firstNameFocusNode;
@@ -52,7 +52,6 @@ class _SignupPageState extends State<SignupPage> {
     passwordFocusNode.dispose();
     firstNameFocusNode.dispose();
     lastNameFocusNode.dispose();
-
     super.dispose();
   }
 
@@ -72,7 +71,6 @@ class _SignupPageState extends State<SignupPage> {
               hasScrollBody: false,
               child: Form(
                 key: _formKey,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -119,6 +117,7 @@ class _SignupPageState extends State<SignupPage> {
   Widget _firstNameField(BuildContext context) {
     return TextFormField(
       controller: firstNameController,
+      focusNode: firstNameFocusNode,
       decoration: const InputDecoration(hintText: 'First Name'),
       keyboardType: TextInputType.text,
       validator: (value) {
@@ -133,6 +132,7 @@ class _SignupPageState extends State<SignupPage> {
   Widget _lastNameField(BuildContext context) {
     return TextFormField(
       controller: lastNameController,
+      focusNode: lastNameFocusNode,
       decoration: const InputDecoration(hintText: 'Last Name'),
       keyboardType: TextInputType.text,
       validator: (value) {
@@ -147,6 +147,7 @@ class _SignupPageState extends State<SignupPage> {
   Widget _emailField(BuildContext context) {
     return TextFormField(
       controller: emailController,
+      focusNode: emailFocusNode,
       decoration: const InputDecoration(hintText: 'Email Address'),
       keyboardType: TextInputType.emailAddress,
       validator: (value) {
@@ -161,8 +162,21 @@ class _SignupPageState extends State<SignupPage> {
   Widget _passwordField(BuildContext context) {
     return TextFormField(
       controller: passwordController,
-      decoration: const InputDecoration(hintText: 'Password'),
-      keyboardType: TextInputType.visiblePassword,
+      focusNode: passwordFocusNode,
+      decoration: InputDecoration(
+        hintText: 'Password',
+        suffixIcon: IconButton(
+          onPressed: () {
+            setState(() {
+              isObscure = !isObscure;
+            });
+          },
+          icon: isObscure
+              ? const Icon(Icons.visibility)
+              : const Icon(Icons.visibility_off),
+        ),
+      ),
+      obscureText: isObscure,
       validator: (value) {
         return MyValidators.passwordValidator(value);
       },
@@ -177,12 +191,15 @@ class _SignupPageState extends State<SignupPage> {
       onPressed: () {
         _signupUser(context);
       },
-      title: 'Sign up',
+      title: 'Continue',
     );
   }
 
   void _signupUser(BuildContext context) {
     if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      FocusScope.of(context).unfocus();
+
       AppNavigator.push(
         context,
         AboutYourselfPage(

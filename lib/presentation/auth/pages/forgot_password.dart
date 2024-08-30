@@ -1,3 +1,4 @@
+import 'package:clot_shop/common/widgets/app_bar/basic_app_bar.dart';
 import 'package:clot_shop/presentation/auth/pages/reset_password.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,31 +13,32 @@ class ForgotPasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const BasicAppBar(),
       body: Padding(
         padding: const EdgeInsets.only(
           bottom: 24,
           left: 24,
           right: 24,
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-              child: SvgPicture.asset(
-                Assets.vectorsForgotPassword,
-                fit: BoxFit.cover,
-                height: 400,
-                width: 400,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: SvgPicture.asset(
+                  Assets.vectorsForgotPassword,
+                  fit: BoxFit.cover,
+                  height: 400,
+                  width: 400,
+                ),
               ),
-            ),
-            _forgotPasswordText(context),
-            const SizedBox(height: 20),
-            _emailField(context),
-            const SizedBox(height: 20),
-            _continueButton(context),
-            const SizedBox(height: 36),
-          ],
+              _forgotPasswordText(context),
+              const SizedBox(height: 20),
+              _emailField(context),
+              const SizedBox(height: 24),
+              _continueButton(context),
+            ],
+          ),
         ),
       ),
     );

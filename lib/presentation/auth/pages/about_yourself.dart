@@ -9,7 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../common/helper/bottom_sheet/app_bottom_sheet.dart';
+import '../../../common/helper/navigator/app_navigator.dart';
 import '../../../core/configs/theme/app_colors.dart';
+import '../../home/pages/home_page.dart';
 import '../bloc/age_selection_cubit/age_selection_cubit.dart';
 import '../bloc/ages_display_cubit/ages_display_cubit.dart';
 import '../bloc/gender_selection_cubit/gender_selection_cubit.dart';
@@ -46,10 +48,19 @@ class AboutYourselfPage extends StatelessWidget {
                   listener: (context, state) {
                     if (state is ButtonFailureState) {
                       var snackBar = SnackBar(
-                        content: Text(state.errorMessage),
-                        behavior: SnackBarBehavior.floating,
+                        content: Center(child: Text(state.errorMessage)),
+                        behavior: SnackBarBehavior.fixed,
+                        padding: const EdgeInsets.all(16),
+                        shape: const StadiumBorder(),
                       );
+                      ScaffoldMessenger.of(context).clearSnackBars();
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }
+                    if (state is ButtonSuccessState) {
+                      AppNavigator.push(
+                        context,
+                        const HomePage(),
+                      );
                     }
                   },
                   child: Column(

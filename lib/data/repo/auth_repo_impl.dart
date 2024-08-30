@@ -1,4 +1,5 @@
 import 'package:clot_shop/data/models/user_creation_req.dart';
+import 'package:clot_shop/data/models/user_info_model.dart';
 import 'package:clot_shop/data/source/auth_firebase_source.dart';
 import 'package:clot_shop/service_locator.dart';
 
@@ -15,5 +16,10 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<Either> getAges() async {
     return await sl<AuthFirebaseSource>().getAges();
+  }
+
+  @override
+  Future<Either> signin(UserInfoModel user) async {
+    return await sl<AuthFirebaseSource>().signin(user);
   }
 }

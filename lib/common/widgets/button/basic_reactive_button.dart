@@ -9,12 +9,13 @@ class BasicReactiveButton extends StatelessWidget {
   final String title;
   final double? height;
   final Widget? content;
-  const BasicReactiveButton(
-      {required this.onPressed,
-      this.title = '',
-      this.height,
-      this.content,
-      super.key});
+  const BasicReactiveButton({
+    required this.onPressed,
+    this.title = '',
+    this.height,
+    this.content,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +30,16 @@ class BasicReactiveButton extends StatelessWidget {
 
   Widget _loading() {
     return ElevatedButton(
-        onPressed: null,
-        style: ElevatedButton.styleFrom(
-          minimumSize: Size.fromHeight(height ?? 50),
-        ),
-        child: Container(
-            height: height ?? 50,
-            alignment: Alignment.center,
-            child: const CircularProgressIndicator()));
+      onPressed: null,
+      style: ElevatedButton.styleFrom(
+        minimumSize: Size.fromHeight(height ?? 50),
+      ),
+      child: Container(
+        height: height ?? 50,
+        alignment: Alignment.center,
+        child: const CircularProgressIndicator(),
+      ),
+    );
   }
 
   Widget _initial() {
@@ -49,7 +52,7 @@ class BasicReactiveButton extends StatelessWidget {
           Text(
             title,
             style: const TextStyle(
-              fontSize: 18,
+              fontSize: 24,
               color: Colors.white,
               fontWeight: FontWeight.w500,
             ),

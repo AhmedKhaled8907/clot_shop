@@ -1,3 +1,4 @@
+import 'package:clot_shop/data/models/user_info_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,6 +8,7 @@ import '../models/user_creation_req.dart';
 abstract class AuthFirebaseSource {
   Future<Either> signup(UserCreationReq user);
   Future<Either> getAges();
+  Future<Either> signin(UserInfoModel user);
 }
 
 class AuthFirebaseSourceImpl implements AuthFirebaseSource {
@@ -55,6 +57,27 @@ class AuthFirebaseSourceImpl implements AuthFirebaseSource {
       return Right(returnedData.docs);
     } catch (e) {
       return const Left('Try again later');
+    }
+  }
+
+  @override
+  Future<Either> signin(UserInfoModel user) async {
+    try {
+      await auth.signInWithEmailAndPassword(
+        email: user.email!,
+        password: user.password!,
+      );
+      return const Right('Signed In was Successful');
+    } on FirebaseAuthException catch (e) {
+      String message = '';
+      if (e.code == 'invalid-email') {
+        message = 'No user found for that email.';
+      } else if (e.code == 'wrong-password') {
+        message = 'Wrong password provided for that user.';
+      } else if (e.code == 'invalid-credentials') {
+        message = 'Wrong credentials provided for that user.';
+      }
+      return Left(message);
     }
   }
 }

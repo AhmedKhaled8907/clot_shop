@@ -232,12 +232,30 @@ class AboutYourselfPage extends StatelessWidget {
         return BasicReactiveButton(
           title: 'Finish',
           onPressed: () {
-            user.gender = context.read<GenderSelectionCubit>().selectedIndex;
-            user.age = context.read<AgeSelectionCubit>().selectedAge;
-            context.read<ButtonStateCubit>().execute(
-                  usecase: SignupUsecase(),
-                  params: user,
-                );
+            // Check if the age is selected
+            final selectedAge = context.read<AgeSelectionCubit>().selectedAge;
+
+            if (selectedAge.isEmpty) {
+              // If no age is selected, show an error message
+              var snackBar = const SnackBar(
+                content: Center(
+                  child: Text('Please select an age range.'),
+                ),
+                behavior: SnackBarBehavior.fixed,
+                padding: EdgeInsets.all(16),
+                shape: StadiumBorder(),
+              );
+              ScaffoldMessenger.of(context).clearSnackBars();
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            } else {
+              // If an age is selected, proceed with the sign-up process
+              user.gender = context.read<GenderSelectionCubit>().selectedIndex;
+              user.age = selectedAge;
+              context.read<ButtonStateCubit>().execute(
+                    usecase: SignupUsecase(),
+                    params: user,
+                  );
+            }
           },
         );
       },

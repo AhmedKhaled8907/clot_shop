@@ -1,3 +1,5 @@
+part of 'button_state_cubit.dart';
+
 abstract class ButtonState {}
 
 class ButtonInitialState extends ButtonState {}

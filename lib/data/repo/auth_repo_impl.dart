@@ -22,4 +22,9 @@ class AuthRepoImpl implements AuthRepo {
   Future<Either> signin(UserInfoModel user) async {
     return await sl<AuthFirebaseSource>().signin(user);
   }
+
+  @override
+  Future<Either> sendPasswordResetEmail(String email) async {
+    return await sl<AuthFirebaseSource>().sendPasswordResetEmail(email);
+  }
 }

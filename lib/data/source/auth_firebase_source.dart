@@ -9,6 +9,7 @@ abstract class AuthFirebaseSource {
   Future<Either> signup(UserCreationReq user);
   Future<Either> getAges();
   Future<Either> signin(UserInfoModel user);
+  Future<Either> sendPasswordResetEmail(String email);
 }
 
 class AuthFirebaseSourceImpl implements AuthFirebaseSource {
@@ -78,6 +79,35 @@ class AuthFirebaseSourceImpl implements AuthFirebaseSource {
         message = 'Wrong credentials provided for that user.';
       }
       return Left(message);
+    }
+  }
+
+  @override
+  Future<Either> sendPasswordResetEmail(String email) async {
+    try {
+      // Step 1: Check if the email exists in Firestore
+      var querySnapshot = await fireStore
+          .collection('users')
+          .where('email', isEqualTo: email)
+          .get();
+
+      if (querySnapshot.docs.isEmpty) {
+        return const Left('No user found for that email.');
+      }
+
+      // Step 2: Send the password reset email if the email exists
+      await auth.sendPasswordResetEmail(email: email);
+      return const Right('Password Reset Email sent');
+    } on FirebaseAuthException catch (e) {
+      String message = '';
+      if (e.code == 'invalid-email') {
+        message = 'Invalid email format.';
+      } else if (e.code == 'user-not-found') {
+        message = 'No user found for that email.';
+      }
+      return Left(message);
+    } catch (e) {
+      return const Left('An unexpected error occurred.');
     }
   }
 }

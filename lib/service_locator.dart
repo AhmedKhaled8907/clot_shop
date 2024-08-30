@@ -6,6 +6,8 @@ import 'package:clot_shop/domain/auth/usecases/signin_usecase.dart';
 import 'package:clot_shop/domain/auth/usecases/signup_usecase.dart';
 import 'package:get_it/get_it.dart';
 
+import 'domain/auth/usecases/password_reset_usecase.dart';
+
 final sl = GetIt.instance;
 
 void serviceLocator() {
@@ -26,5 +28,8 @@ void serviceLocator() {
   );
   sl.registerSingleton<SigninUsecase>(
     SigninUsecase(),
+  );
+  sl.registerSingleton<PasswordResetUsecase>(
+    PasswordResetUsecase(),
   );
 }

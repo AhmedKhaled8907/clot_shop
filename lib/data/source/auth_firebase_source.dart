@@ -11,6 +11,7 @@ abstract class AuthFirebaseSource {
   Future<Either> signin(UserInfoModel user);
   Future<Either> sendPasswordResetEmail(String email);
   Future<bool> isLoggedIn();
+  Future<Either> getUser();
 }
 
 class AuthFirebaseSourceImpl implements AuthFirebaseSource {
@@ -125,6 +126,21 @@ class AuthFirebaseSourceImpl implements AuthFirebaseSource {
       return true;
     } else {
       return false;
+    }
+  }
+
+  @override
+  Future<Either> getUser() async {
+    try {
+      var currentUser = auth.currentUser;
+      var userData = await fireStore
+          .collection('users')
+          .doc(currentUser!.uid)
+          .get()
+          .then((value) => value.data());
+      return Right(userData);
+    } catch (e) {
+      return const Left('Try again later!');
     }
   }
 }

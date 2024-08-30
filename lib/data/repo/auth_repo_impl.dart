@@ -1,5 +1,6 @@
 import 'package:clot_shop/data/models/user_creation_req.dart';
 import 'package:clot_shop/data/models/user_info_model.dart';
+import 'package:clot_shop/data/models/user_model.dart';
 import 'package:clot_shop/data/source/auth_firebase_source.dart';
 import 'package:clot_shop/service_locator.dart';
 
@@ -27,9 +28,21 @@ class AuthRepoImpl implements AuthRepo {
   Future<Either> sendPasswordResetEmail(String email) async {
     return await sl<AuthFirebaseSource>().sendPasswordResetEmail(email);
   }
-  
+
   @override
-  Future<bool> isLoggedIn() async{
+  Future<bool> isLoggedIn() async {
     return await sl<AuthFirebaseSource>().isLoggedIn();
+  }
+
+  @override
+  Future<Either> getUser() async {
+    var user = await sl<AuthFirebaseSource>().getUser();
+    return user.fold((error) {
+      return Left(error);
+    }, (data) {
+      return Right(
+        UserModel.fromMap(data).toEntity(),
+      );
+    });
   }
 }

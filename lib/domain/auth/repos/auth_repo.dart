@@ -8,6 +8,5 @@ abstract class AuthRepo {
   Future<Either> signin(UserInfoModel user);
   Future<Either> sendPasswordResetEmail(String email);
   Future<bool> isLoggedIn();
-
-
+  Future<Either> getUser();
 }

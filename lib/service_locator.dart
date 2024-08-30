@@ -2,6 +2,7 @@ import 'package:clot_shop/data/repo/auth_repo_impl.dart';
 import 'package:clot_shop/data/source/auth_firebase_source.dart';
 import 'package:clot_shop/domain/auth/repos/auth_repo.dart';
 import 'package:clot_shop/domain/auth/usecases/get_ages_usecase.dart';
+import 'package:clot_shop/domain/auth/usecases/get_user_usecase.dart';
 import 'package:clot_shop/domain/auth/usecases/is_logged_in_usecase.dart';
 import 'package:clot_shop/domain/auth/usecases/signin_usecase.dart';
 import 'package:clot_shop/domain/auth/usecases/signup_usecase.dart';
@@ -35,5 +36,8 @@ void serviceLocator() {
   );
   sl.registerSingleton<IsLoggedInUsecase>(
     IsLoggedInUsecase(),
+  );
+  sl.registerSingleton<GetUserUsecase>(
+    GetUserUsecase(),
   );
 }

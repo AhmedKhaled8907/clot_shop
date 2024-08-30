@@ -1,6 +1,8 @@
 import 'package:clot_shop/presentation/home/widgets/header.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/search_field.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -10,10 +12,12 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(16),
+            padding: EdgeInsets.all(18),
             child: Column(
               children: [
                 Header(),
+                SizedBox(height: 24),
+                SearchField(),
               ],
             ),
           ),

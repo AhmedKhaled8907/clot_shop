@@ -1,6 +1,6 @@
 import 'package:clot_shop/common/widgets/button/basic_reactive_button.dart';
 import 'package:clot_shop/common/widgets/button/logo_signin_button.dart';
-import 'package:clot_shop/data/models/user_info_model.dart';
+import 'package:clot_shop/data/auth/models/user_info_model.dart';
 import 'package:clot_shop/domain/auth/usecases/signin_usecase.dart';
 import 'package:clot_shop/presentation/auth/pages/forgot_password.dart';
 import 'package:clot_shop/presentation/auth/pages/signup.dart';

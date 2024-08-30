@@ -1,5 +1,5 @@
 import 'package:clot_shop/common/helper/functions/my_validators.dart';
-import 'package:clot_shop/data/models/user_creation_req.dart';
+import 'package:clot_shop/data/auth/models/user_creation_req.dart';
 import 'package:clot_shop/presentation/auth/pages/about_yourself.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';

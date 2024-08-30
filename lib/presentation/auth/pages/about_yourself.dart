@@ -1,7 +1,7 @@
 import 'package:clot_shop/common/helper/bloc/button/button_state_cubit.dart';
 import 'package:clot_shop/common/widgets/app_bar/basic_app_bar.dart';
 import 'package:clot_shop/common/widgets/button/basic_reactive_button.dart';
-import 'package:clot_shop/data/models/user_creation_req.dart';
+import 'package:clot_shop/data/auth/models/user_creation_req.dart';
 import 'package:clot_shop/domain/auth/usecases/signup_usecase.dart';
 import 'package:clot_shop/presentation/auth/widgets/ages.dart';
 import 'package:flutter/material.dart';

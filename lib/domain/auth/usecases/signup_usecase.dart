@@ -1,7 +1,7 @@
 import 'package:clot_shop/core/usecases/usecase.dart';
 import 'package:dartz/dartz.dart';
 
-import '../../../data/models/user_creation_req.dart';
+import '../../../data/auth/models/user_creation_req.dart';
 import '../../../service_locator.dart';
 import '../repos/auth_repo.dart';
 

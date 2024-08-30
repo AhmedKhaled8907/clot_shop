@@ -10,6 +10,7 @@ abstract class AuthFirebaseSource {
   Future<Either> getAges();
   Future<Either> signin(UserInfoModel user);
   Future<Either> sendPasswordResetEmail(String email);
+  Future<bool> isLoggedIn();
 }
 
 class AuthFirebaseSourceImpl implements AuthFirebaseSource {
@@ -115,6 +116,15 @@ class AuthFirebaseSourceImpl implements AuthFirebaseSource {
       return Left(message);
     } catch (e) {
       return const Left('An unexpected error occurred.');
+    }
+  }
+
+  @override
+  Future<bool> isLoggedIn() async {
+    if (auth.currentUser != null) {
+      return true;
+    } else {
+      return false;
     }
   }
 }

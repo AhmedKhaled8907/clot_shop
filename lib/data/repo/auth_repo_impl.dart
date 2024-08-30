@@ -27,4 +27,9 @@ class AuthRepoImpl implements AuthRepo {
   Future<Either> sendPasswordResetEmail(String email) async {
     return await sl<AuthFirebaseSource>().sendPasswordResetEmail(email);
   }
+  
+  @override
+  Future<bool> isLoggedIn() async{
+    return await sl<AuthFirebaseSource>().isLoggedIn();
+  }
 }

@@ -16,4 +16,15 @@ class ProductRepoImpl implements ProductRepo {
       ),
     );
   }
+
+  @override
+  Future<Either> getNewIn() async {
+    var returnedData = await sl<ProductFirebaseSource>().getNewIn();
+    return returnedData.fold(
+      (error) => Left(error),
+      (data) => Right(
+        List.from(data).map((e) => ProductModel.fromMap(e).toEntity()).toList(),
+      ),
+    );
+  }
 }

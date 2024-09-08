@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../common/helper/images/image_display_helper.dart';
-import '../../../common/helper/navigator/app_navigator.dart';
+import '../../helper/images/image_display_helper.dart';
 import '../../../core/configs/theme/app_colors.dart';
 import '../../../domain/product/entities/product_model.dart';
 

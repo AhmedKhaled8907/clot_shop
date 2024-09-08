@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class ProductFirebaseSource {
   Future<Either> getTopSelling();
+  Future<Either> getNewIn();
 }
 
 class ProductFirebaseSourceImpl implements ProductFirebaseSource {
@@ -17,6 +18,26 @@ class ProductFirebaseSourceImpl implements ProductFirebaseSource {
           .collection('products')
           .where('salesNumber', isGreaterThanOrEqualTo: 20)
           .orderBy('salesNumber', descending: true)
+          .get();
+      return Right((returnedData.docs.map(
+        (e) => e.data(),
+      )).toList());
+    } catch (e) {
+      return const Left('Please try again');
+    }
+  }
+
+  @override
+  Future<Either> getNewIn() async {
+    try {
+      var returnedData = await fireStore
+          .collection('products')
+          .where(
+            'createdAt',
+            isGreaterThanOrEqualTo: DateTime.now().subtract(
+              const Duration(days: 1),
+            ),
+          )
           .get();
       return Right((returnedData.docs.map(
         (e) => e.data(),

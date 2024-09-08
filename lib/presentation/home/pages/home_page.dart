@@ -3,6 +3,7 @@ import 'package:clot_shop/presentation/home/widgets/header.dart';
 import 'package:clot_shop/presentation/home/widgets/top_selling.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/new_in.dart';
 import '../widgets/search_field.dart';
 
 class HomePage extends StatelessWidget {
@@ -24,6 +25,8 @@ class HomePage extends StatelessWidget {
                 Categories(),
                 SizedBox(height: 24),
                 TopSelling(),
+                SizedBox(height: 24),
+                NewIn(),
               ],
             ),
           ),

@@ -1,4 +1,5 @@
 import 'package:clot_shop/common/helper/navigator/app_navigator.dart';
+import 'package:clot_shop/presentation/category_products/pages/category_products.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,7 +34,7 @@ class Categories extends StatelessWidget {
                   },
                 ),
                 const SizedBox(height: 20),
-                _categories(state.category)
+                _categories(state.category, context),
               ],
             );
           }
@@ -43,39 +44,49 @@ class Categories extends StatelessWidget {
     );
   }
 
-  Widget _categories(List<CategoryEntity> categories) {
+  Widget _categories(List<CategoryEntity> categories, BuildContext context) {
     return SizedBox(
       height: 100,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return Column(
-            children: [
-              Container(
-                height: 60,
-                width: 60,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white,
-                  image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: NetworkImage(
-                      ImageDisplayHelper.generateCategoryImageURL(
-                        categories[index].image,
+          return GestureDetector(
+            onTap: () {
+              AppNavigator.push(
+                context,
+                CategoryProducts(
+                  entity: categories[index],
+                ),
+              );
+            },
+            child: Column(
+              children: [
+                Container(
+                  height: 60,
+                  width: 60,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white,
+                    image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: NetworkImage(
+                        ImageDisplayHelper.generateCategoryImageURL(
+                          categories[index].image,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                categories[index].title,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 14,
-                ),
-              )
-            ],
+                const SizedBox(height: 10),
+                Text(
+                  categories[index].title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
+                  ),
+                )
+              ],
+            ),
           );
         },
         separatorBuilder: (context, index) => const SizedBox(width: 15),

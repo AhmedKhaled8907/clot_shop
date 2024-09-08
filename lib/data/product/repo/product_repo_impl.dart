@@ -27,4 +27,16 @@ class ProductRepoImpl implements ProductRepo {
       ),
     );
   }
+
+  @override
+  Future<Either> getProductsByCategoryId({required String categoryId}) async {
+    var returnedData = await sl<ProductFirebaseSource>()
+        .getProductsByCategory(categoryId: categoryId);
+    return returnedData.fold(
+      (error) => Left(error),
+      (data) => Right(
+        List.from(data).map((e) => ProductModel.fromMap(e).toEntity()).toList(),
+      ),
+    );
+  }
 }

@@ -1,7 +1,9 @@
 import 'package:clot_shop/common/helper/bloc/category/cubit/category_display_cubit.dart';
 import 'package:clot_shop/common/helper/images/image_display_helper.dart';
+import 'package:clot_shop/common/helper/navigator/app_navigator.dart';
 import 'package:clot_shop/common/widgets/app_bar/basic_app_bar.dart';
 import 'package:clot_shop/core/configs/theme/app_colors.dart';
+import 'package:clot_shop/presentation/category_products/pages/category_products.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,7 +20,7 @@ class AllCategoriesPage extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(
               vertical: 24,
-              horizontal: 24,
+              horizontal: 16,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,46 +50,47 @@ class AllCategoriesPage extends StatelessWidget {
                           return const SizedBox(height: 12);
                         },
                         itemBuilder: (BuildContext context, int index) {
-                          return Container(
-                            padding: const EdgeInsets.symmetric(vertical: 8),
-                            decoration: BoxDecoration(
-                              color: AppColors.secondBackground,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: ListTile(
-                              leading: Container(
-                                height: 60,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                    fit: BoxFit.fill,
-                                    image: NetworkImage(
-                                      ImageDisplayHelper
-                                          .generateCategoryImageURL(
-                                        state.category[index].image,
+                          return GestureDetector(
+                            onTap: () {
+                              AppNavigator.push(
+                                context,
+                                CategoryProducts(
+                                  entity: state.category[index],
+                                ),
+                              );
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(vertical: 8),
+                              decoration: BoxDecoration(
+                                color: AppColors.secondBackground,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: ListTile(
+                                leading: Container(
+                                  height: 60,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                      fit: BoxFit.fill,
+                                      image: NetworkImage(
+                                        ImageDisplayHelper
+                                            .generateCategoryImageURL(
+                                          state.category[index].image,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              // CircleAvatar(
-                              //   backgroundImage: NetworkImage(
-                              //     ImageDisplayHelper.generateCategoryImageURL(
-                              //       state.category[index].image,
-                              //     ),
-                              //     scale: 0.5,
-                              //   ),
-                              //   radius: 25,
-                              // ),
-                              title: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 8),
-                                child: Text(
-                                  state.category[index].title,
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                    overflow: TextOverflow.ellipsis,
+                                title: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 8),
+                                  child: Text(
+                                    state.category[index].title,
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
                                   ),
                                 ),
                               ),

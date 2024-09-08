@@ -12,10 +12,12 @@ class ProductCubit extends Cubit<ProductState> {
 
   ProductCubit({required this.usecase}) : super(ProductInitial());
 
-  Future<void> getProducts() async {
+  Future<void> getProducts({dynamic params}) async {
     emit(ProductLoading());
 
-    final products = await usecase.call();
+    final products = await usecase.call(
+      param: params,
+    );
     products.fold(
       (failure) => emit(
         ProductFailure(message: failure),

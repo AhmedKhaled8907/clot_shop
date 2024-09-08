@@ -7,6 +7,13 @@ final class ProductInitial extends ProductState {}
 
 final class ProductLoading extends ProductState {}
 
+final class ProductEmpty extends ProductState {
+  final List<ProductEntity> products;
+
+  ProductEmpty({required this.products});
+
+}
+
 final class ProductLoaded extends ProductState {
   final List<ProductEntity> products;
 

@@ -1,0 +1,106 @@
+import 'package:clot_shop/common/helper/bloc/product/cubit/product_cubit.dart';
+import 'package:clot_shop/common/widgets/product/product_card.dart';
+import 'package:clot_shop/domain/category/entities/category_entity.dart';
+import 'package:clot_shop/domain/product/usecases/get_products_by_categories_usecase.dart';
+import 'package:clot_shop/service_locator.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../common/widgets/app_bar/basic_app_bar.dart';
+
+class CategoryProducts extends StatelessWidget {
+  final CategoryEntity entity;
+
+  const CategoryProducts({
+    super.key,
+    required this.entity,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => ProductCubit(
+        usecase: sl<GetProductsByCategoriesUseCase>(),
+      )..getProducts(params: entity.categoryId),
+      child: Scaffold(
+        appBar: const BasicAppBar(),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 16,
+              horizontal: 16,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                BlocBuilder<ProductCubit, ProductState>(
+                  builder: (context, state) {
+                    if (state is ProductLoading) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+
+                    if (state is ProductLoaded) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            '${entity.title}  (${state.products.length})',
+                            style: const TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          if (state.products.isEmpty)
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.6,
+                              child: const Center(
+                                child: Text(
+                                  'No Products Found!',
+                                  style: TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            )
+                          else
+                            _productsLoaded(state),
+                        ],
+                      );
+                    }
+
+                    return Container();
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  GridView _productsLoaded(ProductLoaded state) {
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const BouncingScrollPhysics(),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 15,
+        mainAxisSpacing: 15,
+        childAspectRatio: 0.55,
+      ),
+      itemCount: state.products.length,
+      itemBuilder: (BuildContext context, int index) {
+        return ProductCard(
+          productEntity: state.products[index],
+        );
+      },
+    );
+  }
+}

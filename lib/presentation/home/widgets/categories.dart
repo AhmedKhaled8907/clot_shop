@@ -1,3 +1,4 @@
+import 'package:clot_shop/common/helper/navigator/app_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -5,6 +6,7 @@ import '../../../common/helper/bloc/category/cubit/category_display_cubit.dart';
 import '../../../common/helper/images/image_display_helper.dart';
 import '../../../common/widgets/texts/see_all_text.dart';
 import '../../../domain/category/entities/category_entity.dart';
+import '../../all_categories/pages/all_categories.dart';
 
 class Categories extends StatelessWidget {
   const Categories({super.key});
@@ -23,7 +25,12 @@ class Categories extends StatelessWidget {
               children: [
                 SeeAllText(
                   title: 'Categories',
-                  onTap: () {},
+                  onTap: () {
+                    AppNavigator.push(
+                      context,
+                      const AllCategoriesPage(),
+                    );
+                  },
                 ),
                 const SizedBox(height: 20),
                 _categories(state.category)

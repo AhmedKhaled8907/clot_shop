@@ -22,13 +22,17 @@ class SeeAllText extends StatelessWidget {
             fontSize: 24,
           ),
         ),
-        GestureDetector(
+        InkWell(
+          borderRadius: BorderRadius.circular(8),
           onTap: onTap,
-          child: const Text(
-            'See All',
-            style: TextStyle(
-              fontWeight: FontWeight.w400,
-              fontSize: 16,
+          child: const Padding(
+            padding: EdgeInsets.all(2),
+            child: Text(
+              'See All',
+              style: TextStyle(
+                fontWeight: FontWeight.w400,
+                fontSize: 16,
+              ),
             ),
           ),
         )

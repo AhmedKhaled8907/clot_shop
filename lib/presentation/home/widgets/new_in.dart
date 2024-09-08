@@ -1,3 +1,4 @@
+import 'package:clot_shop/common/helper/navigator/app_navigator.dart';
 import 'package:clot_shop/common/widgets/product/product_card.dart';
 import 'package:clot_shop/domain/product/usecases/get_new_in_usecase.dart';
 import 'package:clot_shop/service_locator.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../common/helper/bloc/product/cubit/product_cubit.dart';
 import '../../../common/widgets/texts/see_all_text.dart';
+import 'all_new_in.dart';
 
 class NewIn extends StatelessWidget {
   const NewIn({super.key});
@@ -29,7 +31,14 @@ class NewIn extends StatelessWidget {
               children: [
                 SeeAllText(
                   title: 'New In',
-                  onTap: () {},
+                  onTap: () {
+                    AppNavigator.push(
+                      context,
+                      AllNewIn(
+                        entity: state.products,
+                      ),
+                    );
+                  },
                 ),
                 const SizedBox(height: 16),
                 SizedBox(

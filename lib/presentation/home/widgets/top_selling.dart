@@ -1,5 +1,7 @@
+import 'package:clot_shop/common/helper/navigator/app_navigator.dart';
 import 'package:clot_shop/domain/product/usecases/get_top_selling_usecase.dart';
 import 'package:clot_shop/common/widgets/product/product_card.dart';
+import 'package:clot_shop/presentation/home/widgets/all_top_selling.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,7 +31,14 @@ class TopSelling extends StatelessWidget {
               children: [
                 SeeAllText(
                   title: 'Top Selling',
-                  onTap: () {},
+                  onTap: () {
+                    AppNavigator.push(
+                      context,
+                      AllTopSelling(
+                        entity: state.products,
+                      ),
+                    );
+                  },
                 ),
                 const SizedBox(height: 16),
                 SizedBox(

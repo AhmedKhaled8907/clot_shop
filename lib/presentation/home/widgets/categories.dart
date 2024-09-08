@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../common/helper/bloc/category/cubit/category_display_cubit.dart';
 import '../../../common/helper/images/image_display_helper.dart';
+import '../../../common/widgets/texts/see_all_text.dart';
 import '../../../domain/category/entities/category_entity.dart';
 
 class Categories extends StatelessWidget {
@@ -20,7 +21,10 @@ class Categories extends StatelessWidget {
           if (state is CategoryDisplaySuccess) {
             return Column(
               children: [
-                _seaAll(),
+                SeeAllText(
+                  title: 'Categories',
+                  onTap: () {},
+                ),
                 const SizedBox(height: 20),
                 _categories(state.category)
               ],
@@ -29,28 +33,6 @@ class Categories extends StatelessWidget {
           return Container();
         },
       ),
-    );
-  }
-
-  Widget _seaAll() {
-    return const Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          'Categories',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
-          ),
-        ),
-        Text(
-          'See All',
-          style: TextStyle(
-            fontWeight: FontWeight.w400,
-            fontSize: 16,
-          ),
-        )
-      ],
     );
   }
 

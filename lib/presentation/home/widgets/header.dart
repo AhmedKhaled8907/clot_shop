@@ -1,5 +1,5 @@
 import 'package:clot_shop/core/configs/assets/assets.dart';
-import 'package:clot_shop/presentation/home/bloc/cubit/user_info_display_cubit.dart';
+import 'package:clot_shop/presentation/home/bloc/user_info_display_cubit/user_info_display_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';

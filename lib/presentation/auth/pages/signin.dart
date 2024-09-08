@@ -162,9 +162,7 @@ class _SigninPageState extends State<SigninPage> {
       validator: (value) {
         return MyValidators.passwordValidator(value);
       },
-      onFieldSubmitted: (value) {
-        _signinUser(context);
-      },
+      onFieldSubmitted: (value) {},
     );
   }
 
@@ -190,26 +188,23 @@ class _SigninPageState extends State<SigninPage> {
     return Builder(builder: (context) {
       return BasicReactiveButton(
         onPressed: () {
-          _signinUser(context);
+          if (_formKey.currentState!.validate()) {
+            _formKey.currentState!.save();
+            FocusScope.of(context).unfocus();
+            context.read<ButtonStateCubit>().execute(
+                  usecase: SigninUsecase(),
+                  params: UserInfoModel(
+                    email: emailController.text,
+                    password: passwordController.text,
+                  ),
+                );
+          }
         },
         title: 'Sign in',
       );
     });
   }
 
-  void _signinUser(BuildContext context) {
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-      FocusScope.of(context).unfocus();
-      context.read<ButtonStateCubit>().execute(
-            usecase: SigninUsecase(),
-            params: UserInfoModel(
-              email: emailController.text,
-              password: passwordController.text,
-            ),
-          );
-    }
-  }
 
   Row _orDivider() {
     return const Row(

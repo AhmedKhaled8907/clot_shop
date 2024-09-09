@@ -10,35 +10,32 @@ class ProductImages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: SizedBox(
-        height: size.height * 0.3,
-        child: Center(
-          child: ListView.separated(
-            shrinkWrap: true,
-            itemCount: entity.images.length,
-            scrollDirection: Axis.horizontal,
-            separatorBuilder: (BuildContext context, int index) {
-              return const SizedBox(width: 8);
-            },
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                width: 200,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  image: DecorationImage(
-                    image: NetworkImage(
-                      ImageDisplayHelper.generateProductImageURL(
-                        entity.images[index],
-                      ),
+    return SizedBox(
+      height: size.height * 0.3,
+      child: Center(
+        child: ListView.separated(
+          shrinkWrap: true,
+          itemCount: entity.images.length,
+          scrollDirection: Axis.horizontal,
+          separatorBuilder: (BuildContext context, int index) {
+            return const SizedBox(width: 8);
+          },
+          itemBuilder: (BuildContext context, int index) {
+            return Container(
+              width: 200,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                image: DecorationImage(
+                  image: NetworkImage(
+                    ImageDisplayHelper.generateProductImageURL(
+                      entity.images[index],
                     ),
-                    fit: BoxFit.fill,
                   ),
+                  fit: BoxFit.fill,
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
       ),
     );

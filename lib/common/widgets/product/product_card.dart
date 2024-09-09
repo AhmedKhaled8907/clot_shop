@@ -1,18 +1,28 @@
+import 'package:clot_shop/presentation/product_details/pages/product_details_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../helper/images/image_display_helper.dart';
 import '../../../core/configs/theme/app_colors.dart';
 import '../../../domain/product/entities/product_model.dart';
+import '../../helper/navigator/app_navigator.dart';
 
 class ProductCard extends StatelessWidget {
   final ProductEntity productEntity;
-  const ProductCard({required this.productEntity, super.key});
+  const ProductCard({
+    required this.productEntity,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // AppNavigator.push(context, ProductDetailPage(productEntity: productEntity,));
+        AppNavigator.push(
+          context,
+          ProductDetailsPage(
+            entity: productEntity,
+          ),
+        );
       },
       child: Container(
         width: 185,

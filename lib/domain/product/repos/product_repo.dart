@@ -6,4 +6,7 @@ abstract class ProductRepo {
   Future<Either> getProductsByCategoryId({
     required String categoryId,
   });
+  Future<Either> getProductsByTitle({
+    required String title,
+  });
 }

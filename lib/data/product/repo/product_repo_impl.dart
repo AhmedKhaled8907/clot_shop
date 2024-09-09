@@ -39,4 +39,16 @@ class ProductRepoImpl implements ProductRepo {
       ),
     );
   }
+
+  @override
+  Future<Either> getProductsByTitle({required String title}) async {
+    var returnedData = await sl<ProductFirebaseSource>()
+        .getProductsByTitle(title: title);
+    return returnedData.fold(
+      (error) => Left(error),
+      (data) => Right(
+        List.from(data).map((e) => ProductModel.fromMap(e).toEntity()).toList(),
+      ),
+    );
+  }
 }

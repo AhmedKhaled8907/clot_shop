@@ -42,7 +42,7 @@ class NewIn extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.375,
+                  height: MediaQuery.of(context).size.height * 0.39,
                   child: ListView.separated(
                     scrollDirection: Axis.horizontal,
                     itemCount: state.products.length,

@@ -19,6 +19,7 @@ import 'data/categories/source/category_firebase_source.dart';
 import 'data/product/repo/product_repo_impl.dart';
 import 'domain/auth/usecases/password_reset_usecase.dart';
 import 'domain/category/repos/category_repo.dart';
+import 'domain/product/usecases/get_product_by_title_usecase.dart';
 
 final sl = GetIt.instance;
 
@@ -84,5 +85,10 @@ void serviceLocator() {
   // products by category
   sl.registerSingleton<GetProductsByCategoriesUseCase>(
     GetProductsByCategoriesUseCase(),
+  );
+
+  // products by title
+  sl.registerSingleton<GetProductByTitleUsecase>(
+    GetProductByTitleUsecase(),
   );
 }

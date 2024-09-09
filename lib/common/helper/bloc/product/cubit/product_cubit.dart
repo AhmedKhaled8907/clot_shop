@@ -27,4 +27,8 @@ class ProductCubit extends Cubit<ProductState> {
       ),
     );
   }
+
+  Future<void> getInitial() async {
+    emit(ProductInitial());
+  }
 }

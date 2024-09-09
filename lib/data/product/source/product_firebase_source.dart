@@ -8,6 +8,9 @@ abstract class ProductFirebaseSource {
   Future<Either> getProductsByCategory({
     required String categoryId,
   });
+  Future<Either> getProductsByTitle({
+    required String title,
+  });
 }
 
 class ProductFirebaseSourceImpl implements ProductFirebaseSource {
@@ -35,14 +38,15 @@ class ProductFirebaseSourceImpl implements ProductFirebaseSource {
     try {
       var returnedData = await fireStore
           .collection('products')
-          .where(
-            'createdAt',
-            isGreaterThanOrEqualTo: DateTime.now().subtract(
-              const Duration(days: 1),
-            ),
-          )
+          // .where(
+          //   'createdAt',
+          //   isGreaterThanOrEqualTo: DateTime.now().subtract(
+          //     const Duration(days: 1),
+          //   ),
+          // )
           .orderBy('createdAt', descending: true)
           .get();
+
       return Right((returnedData.docs.map((e) => e.data())).toList());
     } catch (e) {
       return const Left('Please try again');
@@ -55,6 +59,20 @@ class ProductFirebaseSourceImpl implements ProductFirebaseSource {
       var returnedData = await fireStore
           .collection('products')
           .where('categoryId', isEqualTo: categoryId)
+          .get();
+
+      return Right((returnedData.docs.map((e) => e.data())).toList());
+    } catch (e) {
+      return const Left('Please try again');
+    }
+  }
+
+  @override
+  Future<Either> getProductsByTitle({required String title}) async {
+    try {
+      var returnedData = await fireStore
+          .collection('products')
+          .where('title', isGreaterThanOrEqualTo: title)
           .get();
 
       return Right((returnedData.docs.map((e) => e.data())).toList());

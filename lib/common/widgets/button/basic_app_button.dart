@@ -14,7 +14,8 @@ class BasicAppButton extends StatelessWidget {
     this.height,
     this.width,
     this.content,
-    super.key,  this.color = AppColors.primary,
+    super.key,
+    this.color = AppColors.primary,
   });
 
   @override

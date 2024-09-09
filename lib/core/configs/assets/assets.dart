@@ -22,6 +22,10 @@ class Assets {
   /// assets/images/Apple.png
   static const String imagesApple = "assets/images/Apple.png";
 
+  /// Assets for imagesEmptySearch
+  /// assets/images/empty_search.png
+  static const String imagesEmptySearch = "assets/images/empty_search.png";
+
   /// Assets for imagesFacebook
   /// assets/images/facebook.png
   static const String imagesFacebook = "assets/images/facebook.png";
@@ -65,5 +69,9 @@ class Assets {
   /// Assets for vectorsSearch
   /// assets/vectors/search.svg
   static const String vectorsSearch = "assets/vectors/search.svg";
+
+  /// Assets for vectorsSearchBar
+  /// assets/vectors/search_bar.svg
+  static const String vectorsSearchBar = "assets/vectors/search_bar.svg";
 }
 

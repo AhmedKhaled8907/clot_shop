@@ -15,7 +15,7 @@ class ProductCard extends StatelessWidget {
         // AppNavigator.push(context, ProductDetailPage(productEntity: productEntity,));
       },
       child: Container(
-        width: 180,
+        width: 185,
         decoration: BoxDecoration(
           color: AppColors.secondBackground,
           borderRadius: BorderRadius.circular(8),

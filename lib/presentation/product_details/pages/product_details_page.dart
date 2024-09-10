@@ -1,3 +1,4 @@
+import 'package:clot_shop/common/helper/bloc/button/button_state_cubit.dart';
 import 'package:clot_shop/common/widgets/app_bar/basic_app_bar.dart';
 import 'package:clot_shop/domain/product/entities/product_model.dart';
 import 'package:clot_shop/presentation/product_details/widgets/product_images.dart';
@@ -29,6 +30,7 @@ class ProductDetailsPage extends StatelessWidget {
         BlocProvider(create: (context) => ProductQuantityCubit()),
         BlocProvider(create: (context) => ProductColorSelectionCubit()),
         BlocProvider(create: (context) => ProductSizeSelectionCubit()),
+        BlocProvider(create: (context) => ButtonStateCubit()),
       ],
       child: Scaffold(
         appBar: const BasicAppBar(),
@@ -47,7 +49,7 @@ class ProductDetailsPage extends StatelessWidget {
                 const SizedBox(height: 16),
                 SelectedSize(entity: entity),
                 const SizedBox(height: 16),
-              SelectedColors(entity: entity),
+                SelectedColors(entity: entity),
                 const SizedBox(height: 16),
                 ProductQuantity(entity: entity),
               ],

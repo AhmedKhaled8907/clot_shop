@@ -94,7 +94,7 @@ class ProductColors extends StatelessWidget {
                                     border: state == index
                                         ? Border.all(
                                             color: Colors.white,
-                                            width: 3,
+                                            width: 2,
                                           )
                                         : null,
                                   ),

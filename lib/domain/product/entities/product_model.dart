@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:clot_shop/domain/product/entities/product_color_model.dart';
+import 'package:clot_shop/domain/product/entities/product_color_entity.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProductEntity {
@@ -10,7 +10,7 @@ class ProductEntity {
   final int gender;
   final List<String> images;
   final num price;
-  final List<int> sizes;
+  final List<String> sizes;
   final String productId;
   final int salesNumber;
   final String title;

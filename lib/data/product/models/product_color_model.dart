@@ -1,45 +1,36 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
-import 'dart:convert';
-
-import '../../../domain/product/entities/product_color_model.dart';
+import '../../../domain/product/entities/product_color_entity.dart';
 
 class ProductColorModel {
   final String title;
-  final String hasCode;
+  final List<int> rgb;
 
   ProductColorModel({
     required this.title,
-    required this.hasCode,
+    required this.rgb,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'title': title,
-      'hasCode': hasCode,
+      'rgb': rgb,
     };
   }
 
   factory ProductColorModel.fromMap(Map<String, dynamic> map) {
     return ProductColorModel(
       title: map['title'] as String,
-      hasCode: map['hasCode'] as String,
+      rgb: List<int>.from(
+        map['rgb'].map((e) => e),
+      ),
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory ProductColorModel.fromJson(String source) =>
-      ProductColorModel.fromMap(
-        json.decode(source) as Map<String, dynamic>,
-      );
 }
 
 extension ProductColorXModel on ProductColorModel {
   ProductColorEntity toEntity() {
     return ProductColorEntity(
       title: title,
-      hasCode: hasCode,
+      rgb: rgb,
     );
   }
 }
@@ -48,7 +39,7 @@ extension ProductColorXEntity on ProductColorEntity {
   ProductColorModel fromEntity() {
     return ProductColorModel(
       title: title,
-      hasCode: hasCode,
+      rgb: rgb,
     );
   }
 }

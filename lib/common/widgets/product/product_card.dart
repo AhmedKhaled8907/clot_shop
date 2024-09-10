@@ -28,7 +28,7 @@ class ProductCard extends StatelessWidget {
         width: 185,
         decoration: BoxDecoration(
           color: AppColors.secondBackground,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(4),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,8 +48,8 @@ class ProductCard extends StatelessWidget {
                     ),
                   ),
                   borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(8),
-                    topRight: Radius.circular(8),
+                    topLeft: Radius.circular(4),
+                    topRight: Radius.circular(4),
                   ),
                 ),
               ),

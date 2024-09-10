@@ -1,9 +1,9 @@
 class ProductColorEntity {
   final String title;
-  final String hasCode;
+  final List<int> rgb;
 
   ProductColorEntity({
     required this.title,
-    required this.hasCode,
+    required this.rgb,
   });
 }

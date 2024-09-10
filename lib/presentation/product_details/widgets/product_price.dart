@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../common/helper/product/product_price_helper.dart';
 import '../../../core/configs/theme/app_colors.dart';
 import '../../../domain/product/entities/product_model.dart';
 
@@ -13,16 +14,17 @@ class ProductPrice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final productPriceText = entity.discountedPrice != 0
-        ? entity.discountedPrice.toString()
-        : entity.price.toString();
+    var price = ProductPriceHelper.provideCurrentPrice(entity);
 
-    return Text(
-      '\$$productPriceText',
-      style: const TextStyle(
-        fontSize: 20,
-        color: AppColors.primary,
-        fontWeight: FontWeight.w500,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4),
+      child: Text(
+        '\$$price',
+        style: const TextStyle(
+          fontSize: 22,
+          color: AppColors.primary,
+          fontWeight: FontWeight.w500,
+        ),
       ),
     );
   }

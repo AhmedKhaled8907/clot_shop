@@ -14,7 +14,7 @@ class ProductModel {
   final int gender;
   final List<String>? images;
   final num price;
-  final List<int> sizes;
+  final List<String> sizes;
   final String productId;
   final int salesNumber;
   final String title;
@@ -36,7 +36,7 @@ class ProductModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'categoryId': categoryId,
-      'colors': colors.map((x) => x.toMap()).toList(),
+      'colors': colors.map((x) => x.toMap()).toList() ,
       'createdAt': createdAt,
       'discountedPrice': discountedPrice,
       'gender': gender,
@@ -64,8 +64,8 @@ class ProductModel {
           ? List<String>.from((map['images'] as List<dynamic>).cast<String>())
           : [],
       price: map['price'] as num,
-      sizes: List<int>.from(
-        (map['sizes'] as List<dynamic>).cast<int>(),
+      sizes: List<String>.from(
+        (map['sizes'] as List<dynamic>).cast<String>(),
       ),
       productId: map['productId'] as String,
       salesNumber: map['salesNumber'] as int,
@@ -82,33 +82,35 @@ class ProductModel {
 extension ProductXModel on ProductModel {
   ProductEntity toEntity() {
     return ProductEntity(
-        categoryId: categoryId,
-        colors: colors.map((e) => e.toEntity()).toList(),
-        createdAt: createdAt,
-        discountedPrice: discountedPrice,
-        gender: gender,
-        images: images!,
-        price: price,
-        sizes: sizes,
-        productId: productId,
-        salesNumber: salesNumber,
-        title: title);
+      categoryId: categoryId,
+      colors: colors.map((e) => e.toEntity()).toList(),
+      createdAt: createdAt,
+      discountedPrice: discountedPrice,
+      gender: gender,
+      images: images!,
+      price: price,
+      sizes: sizes,
+      productId: productId,
+      salesNumber: salesNumber,
+      title: title,
+    );
   }
 }
 
 extension ProductXEntity on ProductEntity {
   ProductModel fromEntity() {
     return ProductModel(
-        categoryId: categoryId,
-        colors: colors.map((e) => e.fromEntity()).toList(),
-        createdAt: createdAt,
-        discountedPrice: discountedPrice,
-        gender: gender,
-        images: images,
-        price: price,
-        sizes: sizes,
-        productId: productId,
-        salesNumber: salesNumber,
-        title: title);
+      categoryId: categoryId,
+      colors: colors.map((e) => e.fromEntity()).toList() ,
+      createdAt: createdAt,
+      discountedPrice: discountedPrice,
+      gender: gender,
+      images: images,
+      price: price,
+      sizes: sizes,
+      productId: productId,
+      salesNumber: salesNumber,
+      title: title,
+    );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:clot_shop/common/helper/bloc/product/cubit/product_cubit.dart';
-import 'package:clot_shop/common/widgets/product/product_card.dart';
+import 'package:clot_shop/common/widgets/product/product_grid_view.dart';
 import 'package:clot_shop/domain/category/entities/category_entity.dart';
 import 'package:clot_shop/domain/product/usecases/get_products_by_categories_usecase.dart';
 import 'package:clot_shop/service_locator.dart';
@@ -69,7 +69,7 @@ class CategoryProducts extends StatelessWidget {
                               ),
                             )
                           else
-                            _productsLoaded(state),
+                            ProductGridView(state: state),
                         ],
                       );
                     }
@@ -82,25 +82,6 @@ class CategoryProducts extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  GridView _productsLoaded(ProductLoaded state) {
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const BouncingScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 15,
-        mainAxisSpacing: 15,
-        childAspectRatio: 0.55,
-      ),
-      itemCount: state.products.length,
-      itemBuilder: (BuildContext context, int index) {
-        return ProductCard(
-          productEntity: state.products[index],
-        );
-      },
     );
   }
 }

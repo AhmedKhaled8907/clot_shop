@@ -12,11 +12,14 @@ class ProductTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      entity.title,
-      style: const TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.w600,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4),
+      child: Text(
+        entity.title,
+        style: const TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+        ),
       ),
     );
   }

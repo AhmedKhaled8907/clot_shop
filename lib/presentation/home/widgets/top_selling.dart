@@ -47,7 +47,7 @@ class TopSelling extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     itemCount: state.products.length,
                     separatorBuilder: (BuildContext context, int index) {
-                      return const SizedBox(width: 16);
+                      return const SizedBox(width: 8);
                     },
                     itemBuilder: (BuildContext context, int index) {
                       return ProductCard(

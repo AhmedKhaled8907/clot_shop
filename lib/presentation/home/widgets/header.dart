@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../common/helper/navigator/app_navigator.dart';
 import '../../../core/configs/theme/app_colors.dart';
 import '../../../domain/auth/entities/user_entity.dart';
+import '../../cart/pages/cart_page.dart';
 
 class Header extends StatelessWidget {
   const Header({super.key});
@@ -25,7 +27,7 @@ class Header extends StatelessWidget {
               children: [
                 _profileImage(state.user),
                 _gender(state.user),
-                _card()
+                _cart(context),
               ],
             );
           }
@@ -71,17 +73,22 @@ class Header extends StatelessWidget {
     );
   }
 
-  Widget _card() {
-    return Container(
-      height: 40,
-      width: 40,
-      decoration: const BoxDecoration(
-        color: AppColors.primary,
-        shape: BoxShape.circle,
-      ),
-      child: SvgPicture.asset(
-        Assets.vectorsBag,
-        fit: BoxFit.none,
+  Widget _cart(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        AppNavigator.push(context, const CartPage());
+      },
+      child: Container(
+        height: 40,
+        width: 40,
+        decoration: const BoxDecoration(
+          color: AppColors.primary,
+          shape: BoxShape.circle,
+        ),
+        child: SvgPicture.asset(
+          Assets.vectorsBag,
+          fit: BoxFit.none,
+        ),
       ),
     );
   }

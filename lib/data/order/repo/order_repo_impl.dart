@@ -1,3 +1,4 @@
+import 'package:clot_shop/data/order/models/product_ordered_model.dart';
 import 'package:clot_shop/data/order/sources/order_firebase_source.dart';
 import 'package:dartz/dartz.dart';
 
@@ -9,5 +10,18 @@ class OrderRepoImpl extends OrderRepo {
   @override
   Future<Either> addToCart(AddToCartReq cart) async {
     return await sl<OrderFirebaseSource>().addToCart(cart);
+  }
+
+  @override
+  Future<Either> getCartProducts() async {
+    var returnedData = await sl<OrderFirebaseSource>().getCartProducts();
+    return returnedData.fold(
+      (error) => Left(error),
+      (data) => Right(
+        List.from(data)
+            .map((e) => ProductOrderedModel.fromMap(e).toEntity())
+            .toList(),
+      ),
+    );
   }
 }

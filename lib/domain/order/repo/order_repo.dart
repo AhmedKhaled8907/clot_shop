@@ -4,4 +4,5 @@ import 'package:dartz/dartz.dart';
 abstract class OrderRepo {
   Future<Either> addToCart(AddToCartReq cart);
   Future<Either> getCartProducts();
+  Future<Either> deleteProductById(String productId);
 }

@@ -10,6 +10,7 @@ class ProductOrderedModel {
   final double productPrice;
   final double totalPrice;
   final String createAt;
+  final String id;
 
   ProductOrderedModel({
     required this.productId,
@@ -21,6 +22,7 @@ class ProductOrderedModel {
     required this.productPrice,
     required this.totalPrice,
     required this.createAt,
+    required this.id,
   });
 
   factory ProductOrderedModel.fromMap(Map<String, dynamic> map) {
@@ -34,6 +36,7 @@ class ProductOrderedModel {
       productPrice: map['productPrice'] as double,
       totalPrice: map['totalPrice'] as double,
       createAt: map['createAt'] as String,
+      id: map['id'] as String,
     );
   }
 }
@@ -50,6 +53,7 @@ extension ProductOrderedModelX on ProductOrderedModel {
       productPrice: productPrice,
       totalPrice: totalPrice,
       createAt: createAt,
+      id: id,
     );
   }
 }

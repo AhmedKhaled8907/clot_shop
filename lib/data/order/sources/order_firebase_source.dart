@@ -7,6 +7,7 @@ import '../models/add_to_cart_req.dart';
 abstract class OrderFirebaseSource {
   Future<Either> addToCart(AddToCartReq cart);
   Future<Either> getCartProducts();
+  Future<Either> deleteProductById(String productId);
 }
 
 class OrderFirebaseSourceImpl extends OrderFirebaseSource {
@@ -39,9 +40,34 @@ class OrderFirebaseSourceImpl extends OrderFirebaseSource {
           .collection('cart')
           .orderBy('createAt', descending: true)
           .get();
-      return Right(returnedData.docs.map((e) => e.data()).toList());
+
+      var products = [];
+      for (var item in returnedData.docs) {
+        var data = item.data();
+        data.addAll({'id': item.id});
+        products.add(data);
+      }
+
+      return Right(products);
     } catch (e) {
       return const Left('Try again later!');
     }
   }
+
+  @override
+  Future<Either> deleteProductById(String productId) async {
+    var uid = firebase.currentUser!.uid;
+    try {
+      await firestore
+          .collection('users')
+          .doc(uid)
+          .collection('cart')
+          .doc(productId)
+          .delete();
+      return const Right('Deleting is a success!');
+    } catch (e) {
+      return const Left('Try again later!');
+    }
+  }
+
 }

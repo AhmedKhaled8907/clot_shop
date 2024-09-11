@@ -1,5 +1,7 @@
 import 'package:clot_shop/core/configs/theme/app_colors.dart';
+import 'package:clot_shop/presentation/cart/bloc/cart_product_display_cubit/cart_product_display_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../common/helper/images/image_display_helper.dart';
 import '../../../domain/order/entity/product_ordered_entity.dart';
@@ -133,9 +135,9 @@ class CartCard extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    // context
-                    //     .read<CartProductsDisplayCubit>()
-                    //     .removeProduct(productOrderedEntity);
+                    context
+                        .read<CartProductDisplayCubit>()
+                        .deleteProductById(entity);
                   },
                   child: Container(
                     height: 24,

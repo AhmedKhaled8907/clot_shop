@@ -24,4 +24,9 @@ class OrderRepoImpl extends OrderRepo {
       ),
     );
   }
+
+  @override
+  Future<Either> deleteProductById(String productId) async {
+    return await sl<OrderFirebaseSource>().deleteProductById(productId);
+  }
 }

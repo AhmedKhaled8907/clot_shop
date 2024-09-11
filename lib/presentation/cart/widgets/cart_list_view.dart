@@ -11,13 +11,13 @@ class CartListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Align(
             alignment: Alignment.topRight,
             child: Text(
-              'Remove All',
-              style: TextStyle(
+              'Remove All (${entities.length})  ',
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
               ),

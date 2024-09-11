@@ -9,17 +9,35 @@ class CartListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.separated(
-        shrinkWrap: true,
-        itemCount: entities.length,
-        separatorBuilder: (BuildContext context, int index) {
-          return const SizedBox(height: 12);
-        },
-        itemBuilder: (BuildContext context, int index) {
-          return CartCard(entity: entities[index]);
-        },
-      ),
+    return Column(
+      children: [
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          child: Align(
+            alignment: Alignment.topRight,
+            child: Text(
+              'Remove All',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 16),
+        Expanded(
+          child: ListView.separated(
+            shrinkWrap: true,
+            itemCount: entities.length,
+            separatorBuilder: (BuildContext context, int index) {
+              return const SizedBox(height: 12);
+            },
+            itemBuilder: (BuildContext context, int index) {
+              return CartCard(entity: entities[index]);
+            },
+          ),
+        ),
+      ],
     );
   }
 }

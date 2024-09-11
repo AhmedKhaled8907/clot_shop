@@ -20,6 +20,7 @@ class AddToBag extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(24),
       child: BasicReactiveButton(
+        height: 55,
         onPressed: () {
           _addToCartData(context);
         },
@@ -46,7 +47,6 @@ class AddToBag extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 color: Colors.white,
-                fontWeight: FontWeight.w500,
               ),
             ),
           ],
@@ -69,7 +69,6 @@ class AddToBag extends StatelessWidget {
           usecase: AddToCartUsecase(),
           params: AddToCartReq(
             productId: entity.productId,
-            
             productTitle: entity.title,
             productImage: entity.images[0],
             productQuantity: productQuantity,

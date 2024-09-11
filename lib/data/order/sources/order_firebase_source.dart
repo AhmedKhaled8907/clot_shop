@@ -8,6 +8,7 @@ abstract class OrderFirebaseSource {
   Future<Either> addToCart(AddToCartReq cart);
   Future<Either> getCartProducts();
   Future<Either> deleteProductById(String productId);
+  Future<Either> deleteCart();
 }
 
 class OrderFirebaseSourceImpl extends OrderFirebaseSource {
@@ -70,4 +71,25 @@ class OrderFirebaseSourceImpl extends OrderFirebaseSource {
     }
   }
 
+  @override
+  Future<Either> deleteCart() async {
+    var uid = firebase.currentUser!.uid;
+    try {
+      var cartItems =
+          await firestore.collection('users').doc(uid).collection('cart').get();
+
+      for (var item in cartItems.docs) {
+        await firestore
+            .collection('users')
+            .doc(uid)
+            .collection('cart')
+            .doc(item.id)
+            .delete();
+      }
+
+      return const Right('All cart items deleted successfully!');
+    } catch (e) {
+      return const Left('Error occurred while deleting cart items.');
+    }
+  }
 }

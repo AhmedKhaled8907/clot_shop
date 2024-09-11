@@ -29,4 +29,9 @@ class OrderRepoImpl extends OrderRepo {
   Future<Either> deleteProductById(String productId) async {
     return await sl<OrderFirebaseSource>().deleteProductById(productId);
   }
+
+  @override
+  Future<Either> deleteCart() async {
+    return await sl<OrderFirebaseSource>().deleteCart();
+  }
 }

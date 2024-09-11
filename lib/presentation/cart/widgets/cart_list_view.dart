@@ -1,6 +1,9 @@
 import 'package:clot_shop/domain/order/entity/product_ordered_entity.dart';
 import 'package:clot_shop/presentation/cart/widgets/cart_card.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../bloc/cart_product_display_cubit/cart_product_display_cubit.dart';
 
 class CartListView extends StatelessWidget {
   const CartListView({super.key, required this.entities});
@@ -11,15 +14,20 @@ class CartListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: Align(
-            alignment: Alignment.topRight,
-            child: Text(
-              'Remove All (${entities.length})  ',
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
+        GestureDetector(
+          onTap: () {
+            context.read<CartProductDisplayCubit>().deleteCart();
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: Align(
+              alignment: Alignment.topRight,
+              child: Text(
+                'Remove All (${entities.length})  ',
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
           ),

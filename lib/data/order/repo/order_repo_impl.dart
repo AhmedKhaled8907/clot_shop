@@ -1,3 +1,4 @@
+import 'package:clot_shop/data/order/models/order_registration_req.dart';
 import 'package:clot_shop/data/order/models/product_ordered_model.dart';
 import 'package:clot_shop/data/order/sources/order_firebase_source.dart';
 import 'package:dartz/dartz.dart';
@@ -33,5 +34,14 @@ class OrderRepoImpl extends OrderRepo {
   @override
   Future<Either> deleteCart() async {
     return await sl<OrderFirebaseSource>().deleteCart();
+  }
+
+  @override
+  Future<Either> orderRegistration(OrderRegistrationReq order) async {
+    var returnedData = await sl<OrderFirebaseSource>().orderRegistration(order);
+    return returnedData.fold(
+      (error) => Left(error),
+      (data) => Right((data)),
+    );
   }
 }

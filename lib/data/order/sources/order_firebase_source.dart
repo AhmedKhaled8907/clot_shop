@@ -3,12 +3,14 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../models/add_to_cart_req.dart';
+import '../models/order_registration_req.dart';
 
 abstract class OrderFirebaseSource {
   Future<Either> addToCart(AddToCartReq cart);
   Future<Either> getCartProducts();
   Future<Either> deleteProductById(String productId);
   Future<Either> deleteCart();
+  Future<Either> orderRegistration(OrderRegistrationReq order);
 }
 
 class OrderFirebaseSourceImpl extends OrderFirebaseSource {
@@ -90,6 +92,31 @@ class OrderFirebaseSourceImpl extends OrderFirebaseSource {
       return const Right('All cart items deleted successfully!');
     } catch (e) {
       return const Left('Error occurred while deleting cart items.');
+    }
+  }
+
+  @override
+  Future<Either> orderRegistration(OrderRegistrationReq order) async {
+    var uid = firebase.currentUser!.uid;
+    try {
+      await firestore
+          .collection('users')
+          .doc(uid)
+          .collection('orders')
+          .add(order.toMap());
+
+      for (var item in order.products) {
+        await firestore
+            .collection('users')
+            .doc(uid)
+            .collection('cart')
+            .doc(item.id)
+            .delete();
+      }
+
+      return const Right('Order placed successfully!');
+    } on FirebaseAuthException catch (e) {
+      return Left(e);
     }
   }
 }

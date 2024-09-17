@@ -14,6 +14,7 @@ import 'package:clot_shop/domain/order/usecases/add_to_cart_usecase.dart';
 import 'package:clot_shop/domain/order/usecases/delete_cart_usecase.dart';
 import 'package:clot_shop/domain/order/usecases/delete_product_by_id_usecase.dart';
 import 'package:clot_shop/domain/order/usecases/get_cart_products_usecase.dart';
+import 'package:clot_shop/domain/order/usecases/order_registration_usecase.dart';
 import 'package:clot_shop/domain/product/repos/product_repo.dart';
 import 'package:clot_shop/domain/product/usecases/get_new_in_usecase.dart';
 import 'package:clot_shop/domain/product/usecases/get_products_by_categories_usecase.dart';
@@ -125,5 +126,10 @@ void serviceLocator() {
   // delete cart
   sl.registerSingleton<DeleteCartUsecase>(
     DeleteCartUsecase(),
+  );
+
+    // order registration
+  sl.registerSingleton<OrderRegistrationUsecase>(
+    OrderRegistrationUsecase(),
   );
 }

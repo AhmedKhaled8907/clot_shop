@@ -1,4 +1,6 @@
 import 'package:clot_shop/core/configs/assets/assets.dart';
+import 'package:clot_shop/presentation/cart/bloc/cart_product_display_cubit/cart_product_display_cubit.dart';
+
 import 'package:clot_shop/presentation/home/bloc/user_info_display_cubit/user_info_display_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,8 +16,15 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => UserInfoDisplayCubit()..displayUserInfo(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => UserInfoDisplayCubit()..displayUserInfo(),
+        ),
+        BlocProvider(
+          create: (context) => CartProductDisplayCubit()..getCartProducts(),
+        ),
+      ],
       child: BlocBuilder<UserInfoDisplayCubit, UserInfoDisplayState>(
         builder: (context, state) {
           if (state is UserInfoDisplayLoading) {

@@ -1,13 +1,15 @@
+import 'package:clot_shop/common/helper/navigator/app_navigator.dart';
+import 'package:clot_shop/common/widgets/button/basic_app_button.dart';
 import 'package:clot_shop/domain/order/entity/product_ordered_entity.dart';
+import 'package:clot_shop/presentation/cart/pages/checkout_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common/helper/cart/cart_helper.dart';
-import '../../../common/widgets/button/basic_reactive_button.dart';
 
-class Checkout extends StatelessWidget {
+class PriceCost extends StatelessWidget {
   final List<ProductOrderedEntity> products;
 
-  const Checkout({super.key, required this.products});
+  const PriceCost({super.key, required this.products});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class Checkout extends StatelessWidget {
             _shippingCost(),
             _tax(),
             _total(subtotalPrice),
-            _placeOrder(subtotalPrice)
+            _placeOrder(products, context),
           ],
         ),
       ),
@@ -42,7 +44,7 @@ class Checkout extends StatelessWidget {
         const Text(
           'Subtotal',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 18,
             color: Colors.grey,
           ),
         ),
@@ -64,7 +66,7 @@ class Checkout extends StatelessWidget {
         Text(
           'Shipping Cost',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 18,
             color: Colors.grey,
           ),
         ),
@@ -86,7 +88,7 @@ class Checkout extends StatelessWidget {
         Text(
           'Tax',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 18,
             color: Colors.grey,
           ),
         ),
@@ -110,7 +112,7 @@ class Checkout extends StatelessWidget {
         const Text(
           'Total',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 18,
             color: Colors.grey,
           ),
         ),
@@ -125,31 +127,22 @@ class Checkout extends StatelessWidget {
     );
   }
 
-  BasicReactiveButton _placeOrder(String subtotalPrice) {
-    var total = (double.parse(subtotalPrice) + 8).toString();
-
-    return BasicReactiveButton(
-      height: 55,
-      onPressed: () {},
-      content: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            '\$$total',
-            style: const TextStyle(
-              fontSize: 20,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const Text(
-            'Place Order',
-            style: TextStyle(
-              fontSize: 18,
-              color: Colors.white,
-            ),
-          ),
-        ],
+  Widget _placeOrder(
+      List<ProductOrderedEntity> products, BuildContext context) {
+    return BasicAppButton(
+      onPressed: () {
+        AppNavigator.push(
+          context,
+          Checkout(products: products),
+        );
+      },
+      content: const Text(
+        'Checkout',
+        style: TextStyle(
+          fontSize: 22,
+          color: Colors.white,  
+          fontWeight: FontWeight.w600,
+        ),
       ),
     );
   }

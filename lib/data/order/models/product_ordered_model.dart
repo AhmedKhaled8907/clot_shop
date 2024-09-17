@@ -39,11 +39,43 @@ class ProductOrderedModel {
       id: map['id'] as String,
     );
   }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'productId': productId,
+      'productTitle': productTitle,
+      'productImage': productImage,
+      'productQuantity': productQuantity,
+      'productSize': productSize,
+      'productColor': productColor,
+      'productPrice': productPrice,
+      'totalPrice': totalPrice,
+      'createAt': createAt,
+      'id': id,
+    };
+  }
 }
 
 extension ProductOrderedModelX on ProductOrderedModel {
   ProductOrderedEntity toEntity() {
     return ProductOrderedEntity(
+      productId: productId,
+      productTitle: productTitle,
+      productImage: productImage,
+      productQuantity: productQuantity,
+      productSize: productSize,
+      productColor: productColor,
+      productPrice: productPrice,
+      totalPrice: totalPrice,
+      createAt: createAt,
+      id: id,
+    );
+  }
+}
+
+extension ProductOrderedEntityX on ProductOrderedEntity {
+  ProductOrderedModel fromEntity() {
+    return ProductOrderedModel(
       productId: productId,
       productTitle: productTitle,
       productImage: productImage,

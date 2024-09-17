@@ -286,6 +286,7 @@ class _CheckoutState extends State<Checkout> {
     var total = (double.parse(subtotalPrice) + 8);
 
     return BasicReactiveButton(
+      height: 55,
       onPressed: () {
         if (_formKey.currentState!.validate()) {
           _formKey.currentState!.save();

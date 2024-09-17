@@ -140,8 +140,7 @@ class PriceCost extends StatelessWidget {
         'Checkout',
         style: TextStyle(
           fontSize: 22,
-          color: Colors.white,  
-          fontWeight: FontWeight.w600,
+          color: Colors.white,
         ),
       ),
     );

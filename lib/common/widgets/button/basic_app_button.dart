@@ -26,7 +26,7 @@ class BasicAppButton extends StatelessWidget {
         backgroundColor: color,
         minimumSize: Size(
           width ?? MediaQuery.of(context).size.width,
-          height ?? 55,
+          height ?? 50,
         ),
       ),
       child: content ??

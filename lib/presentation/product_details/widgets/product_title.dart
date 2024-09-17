@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../domain/product/entities/product_model.dart';
+import '../../../domain/product/entities/product_entity.dart';
 
 class ProductTitle extends StatelessWidget {
   const ProductTitle({

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../common/helper/product/product_price_helper.dart';
 import '../../../core/configs/theme/app_colors.dart';
-import '../../../domain/product/entities/product_model.dart';
+import '../../../domain/product/entities/product_entity.dart';
 
 class ProductPrice extends StatelessWidget {
   const ProductPrice({

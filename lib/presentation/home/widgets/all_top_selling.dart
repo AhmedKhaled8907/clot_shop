@@ -1,5 +1,5 @@
 import 'package:clot_shop/common/helper/bloc/product/cubit/product_cubit.dart';
-import 'package:clot_shop/domain/product/entities/product_model.dart';
+import 'package:clot_shop/domain/product/entities/product_entity.dart';
 import 'package:clot_shop/domain/product/usecases/get_top_selling_usecase.dart';
 import 'package:clot_shop/service_locator.dart';
 import 'package:flutter/material.dart';

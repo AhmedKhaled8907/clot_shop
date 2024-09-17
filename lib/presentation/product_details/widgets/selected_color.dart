@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../common/helper/bottom_sheet/app_bottom_sheet.dart';
 import '../../../core/configs/theme/app_colors.dart';
-import '../../../domain/product/entities/product_model.dart';
+import '../../../domain/product/entities/product_entity.dart';
 import '../bloc/product_color_selection_cubit.dart';
 
 class SelectedColors extends StatelessWidget {

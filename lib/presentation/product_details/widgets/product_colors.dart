@@ -3,7 +3,7 @@ import 'package:clot_shop/presentation/product_details/bloc/product_color_select
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../domain/product/entities/product_model.dart';
+import '../../../domain/product/entities/product_entity.dart';
 
 class ProductColors extends StatelessWidget {
   final ProductEntity entity;

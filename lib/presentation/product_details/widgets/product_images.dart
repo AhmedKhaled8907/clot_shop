@@ -1,7 +1,7 @@
 import 'package:clot_shop/common/helper/images/image_display_helper.dart';
 import 'package:flutter/material.dart';
 
-import '../../../domain/product/entities/product_model.dart';
+import '../../../domain/product/entities/product_entity.dart';
 
 class ProductImages extends StatelessWidget {
   final ProductEntity entity;

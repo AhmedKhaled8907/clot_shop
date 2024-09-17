@@ -2,7 +2,7 @@ import 'package:clot_shop/core/configs/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../domain/product/entities/product_model.dart';
+import '../../../domain/product/entities/product_entity.dart';
 import '../bloc/product_size_selection_cubit.dart';
 
 class ProductSizes extends StatelessWidget {

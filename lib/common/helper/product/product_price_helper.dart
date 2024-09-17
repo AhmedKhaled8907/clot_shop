@@ -1,4 +1,4 @@
-import '../../../domain/product/entities/product_model.dart';
+import '../../../domain/product/entities/product_entity.dart';
 
 class ProductPriceHelper {
   static double provideCurrentPrice(ProductEntity product) {

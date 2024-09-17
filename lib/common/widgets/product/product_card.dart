@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../helper/images/image_display_helper.dart';
 import '../../../core/configs/theme/app_colors.dart';
-import '../../../domain/product/entities/product_model.dart';
+import '../../../domain/product/entities/product_entity.dart';
 import '../../helper/navigator/app_navigator.dart';
 
 class ProductCard extends StatelessWidget {

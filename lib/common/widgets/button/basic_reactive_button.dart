@@ -1,3 +1,4 @@
+import 'package:clot_shop/core/configs/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,12 +9,14 @@ class BasicReactiveButton extends StatelessWidget {
   final String title;
   final double? height;
   final Widget? content;
+  final Color? backgroundColor;
   const BasicReactiveButton({
     required this.onPressed,
     this.title = '',
     this.height,
     this.content,
     super.key,
+    this.backgroundColor = AppColors.primary,
   });
 
   @override
@@ -32,6 +35,7 @@ class BasicReactiveButton extends StatelessWidget {
       onPressed: null,
       style: ElevatedButton.styleFrom(
         minimumSize: Size.fromHeight(height ?? 50),
+        backgroundColor: backgroundColor,
       ),
       child: Container(
         height: height ?? 50,
@@ -46,6 +50,7 @@ class BasicReactiveButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         minimumSize: Size.fromHeight(height ?? 50),
+        backgroundColor: backgroundColor,
       ),
       child: content ??
           Text(

@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:clot_shop/core/usecases/usecase.dart';
-import 'package:clot_shop/domain/product/entities/product_model.dart';
+import 'package:clot_shop/domain/product/entities/product_entity.dart';
 
 part 'product_state.dart';
 

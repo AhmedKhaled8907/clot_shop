@@ -16,9 +16,12 @@ import 'package:clot_shop/domain/order/usecases/delete_product_by_id_usecase.dar
 import 'package:clot_shop/domain/order/usecases/get_cart_products_usecase.dart';
 import 'package:clot_shop/domain/order/usecases/order_registration_usecase.dart';
 import 'package:clot_shop/domain/product/repos/product_repo.dart';
+import 'package:clot_shop/domain/product/usecases/add_or_remove_favorite_product_usecase.dart';
+import 'package:clot_shop/domain/product/usecases/get_favorite_products.dart';
 import 'package:clot_shop/domain/product/usecases/get_new_in_usecase.dart';
 import 'package:clot_shop/domain/product/usecases/get_products_by_categories_usecase.dart';
 import 'package:clot_shop/domain/product/usecases/get_top_selling_usecase.dart';
+import 'package:clot_shop/domain/product/usecases/is_favorite_usecase.dart';
 import 'package:get_it/get_it.dart';
 
 import 'data/categories/repo/category_repo_impl.dart';
@@ -128,8 +131,23 @@ void serviceLocator() {
     DeleteCartUsecase(),
   );
 
-    // order registration
+  // order registration
   sl.registerSingleton<OrderRegistrationUsecase>(
     OrderRegistrationUsecase(),
+  );
+
+  // add or remove favorite product
+  sl.registerSingleton<AddOrRemoveFavoriteProductUsecase>(
+    AddOrRemoveFavoriteProductUsecase(),
+  );
+
+  // is favorite
+  sl.registerSingleton<IsFavoriteUsecase>(
+    IsFavoriteUsecase(),
+  );
+
+  // get favorite products
+  sl.registerSingleton<GetFavoriteProducts>(
+    GetFavoriteProducts(),
   );
 }

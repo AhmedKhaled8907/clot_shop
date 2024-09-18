@@ -1,10 +1,12 @@
 import 'package:clot_shop/common/helper/bloc/button/button_state_cubit.dart';
 import 'package:clot_shop/common/widgets/app_bar/basic_app_bar.dart';
+import 'package:clot_shop/common/widgets/button/product_favorite_button.dart';
 import 'package:clot_shop/domain/product/entities/product_entity.dart';
 import 'package:clot_shop/presentation/product_details/widgets/product_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../common/helper/bloc/product/favorite_product_cubit/favorite_product_cubit.dart';
 import '../bloc/product_color_selection_cubit.dart';
 import '../bloc/product_quantity_cubit.dart';
 import '../bloc/product_size_selection_cubit.dart';
@@ -31,9 +33,20 @@ class ProductDetailsPage extends StatelessWidget {
         BlocProvider(create: (context) => ProductColorSelectionCubit()),
         BlocProvider(create: (context) => ProductSizeSelectionCubit()),
         BlocProvider(create: (context) => ButtonStateCubit()),
+        BlocProvider(
+            create: (context) => FavoriteProductCubit()
+              ..isFavorite(productId: entity.productId)),
       ],
       child: Scaffold(
-        appBar: const BasicAppBar(),
+        appBar: BasicAppBar(
+          action: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: ProductFavoriteButton(
+              entity: entity,
+              height: 40,
+            ),
+          ),
+        ),
         body: Padding(
           padding: const EdgeInsets.all(16),
           child: SingleChildScrollView(

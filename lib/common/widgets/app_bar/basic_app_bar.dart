@@ -8,6 +8,7 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Color? backgroundColor;
   final bool hideBack;
   final double? height;
+  final void Function()? onPressed;
   const BasicAppBar({
     this.title,
     this.hideBack = false,
@@ -15,6 +16,7 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.backgroundColor,
     this.height,
     super.key,
+    this.onPressed,
   });
 
   @override
@@ -32,9 +34,10 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: hideBack
           ? null
           : IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
+              onPressed: onPressed ??
+                  () {
+                    Navigator.pop(context);
+                  },
               icon: Container(
                 height: 50,
                 width: 50,

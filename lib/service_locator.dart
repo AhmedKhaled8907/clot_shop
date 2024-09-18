@@ -17,7 +17,7 @@ import 'package:clot_shop/domain/order/usecases/get_cart_products_usecase.dart';
 import 'package:clot_shop/domain/order/usecases/order_registration_usecase.dart';
 import 'package:clot_shop/domain/product/repos/product_repo.dart';
 import 'package:clot_shop/domain/product/usecases/add_or_remove_favorite_product_usecase.dart';
-import 'package:clot_shop/domain/product/usecases/get_favorite_products.dart';
+import 'package:clot_shop/domain/product/usecases/get_favorite_products_usecase.dart';
 import 'package:clot_shop/domain/product/usecases/get_new_in_usecase.dart';
 import 'package:clot_shop/domain/product/usecases/get_products_by_categories_usecase.dart';
 import 'package:clot_shop/domain/product/usecases/get_top_selling_usecase.dart';
@@ -147,7 +147,7 @@ void serviceLocator() {
   );
 
   // get favorite products
-  sl.registerSingleton<GetFavoriteProducts>(
-    GetFavoriteProducts(),
+  sl.registerSingleton<GetFavoriteProductsUsecase>(
+    GetFavoriteProductsUsecase(),
   );
 }

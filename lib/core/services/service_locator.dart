@@ -6,6 +6,9 @@ import 'package:clot_shop/domain/auth/repos/auth_repo.dart';
 import 'package:clot_shop/domain/auth/usecases/get_ages_usecase.dart';
 import 'package:clot_shop/domain/auth/usecases/get_user_usecase.dart';
 import 'package:clot_shop/domain/auth/usecases/is_logged_in_usecase.dart';
+import 'package:clot_shop/domain/auth/usecases/pick_image_from_camera_usecase.dart';
+import 'package:clot_shop/domain/auth/usecases/pick_image_from_gallery_usecase.dart';
+import 'package:clot_shop/domain/auth/usecases/remove_image_usecase.dart';
 import 'package:clot_shop/domain/auth/usecases/sign_out_usecase.dart';
 import 'package:clot_shop/domain/auth/usecases/signin_usecase.dart';
 import 'package:clot_shop/domain/auth/usecases/signup_usecase.dart';
@@ -163,5 +166,17 @@ void serviceLocator() {
   // get orders
   sl.registerSingleton<GetOrdersUsecase>(
     GetOrdersUsecase(),
+  );
+
+  ///////////////////////////////////////////////////////////////
+  // image picker
+  sl.registerSingleton<PickImageFromCameraUsecase>(
+    PickImageFromCameraUsecase(),
+  );
+  sl.registerSingleton<PickImageFromGalleryUsecase>(
+    PickImageFromGalleryUsecase(),
+  );
+  sl.registerSingleton<RemoveImageUsecase>(
+    RemoveImageUsecase(),
   );
 }

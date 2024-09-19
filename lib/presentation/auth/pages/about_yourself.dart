@@ -14,6 +14,8 @@ import '../../home/pages/home_page.dart';
 import '../bloc/age_selection_cubit/age_selection_cubit.dart';
 import '../bloc/ages_display_cubit/ages_display_cubit.dart';
 import '../bloc/gender_selection_cubit/gender_selection_cubit.dart';
+import '../bloc/image_picker_cubit/image_picker_cubit.dart';
+import '../widgets/register_image.dart';
 
 class AboutYourselfPage extends StatelessWidget {
   final UserCreationReq user;
@@ -31,6 +33,7 @@ class AboutYourselfPage extends StatelessWidget {
         BlocProvider(create: (context) => AgeSelectionCubit()),
         BlocProvider(create: (context) => AgesDisplayCubit()),
         BlocProvider(create: (context) => ButtonStateCubit()),
+        BlocProvider(create: (context) => ImagePickerCubit()),
       ],
       child: Scaffold(
         appBar: const BasicAppBar(),
@@ -68,6 +71,10 @@ class AboutYourselfPage extends StatelessWidget {
                     children: [
                       _aboutYourselfText(),
                       const SizedBox(height: 36),
+                      _imageText(),
+                      const SizedBox(height: 24),
+                      const RegisterImage(),
+                      const SizedBox(height: 24),
                       _genderText(),
                       const SizedBox(height: 24),
                       _genders(),
@@ -101,7 +108,8 @@ class AboutYourselfPage extends StatelessWidget {
     return const Text(
       'Who do you shop for?',
       style: TextStyle(
-        fontSize: 18,
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
       ),
     );
   }
@@ -151,11 +159,22 @@ class AboutYourselfPage extends StatelessWidget {
     );
   }
 
+  Widget _imageText() {
+    return const Text(
+      'Add a profile image',
+      style: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+  }
+
   Widget _ageText() {
     return const Text(
       'How old are you?',
       style: TextStyle(
-        fontSize: 18,
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
       ),
     );
   }

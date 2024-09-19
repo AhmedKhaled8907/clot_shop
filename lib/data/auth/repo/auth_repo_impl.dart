@@ -3,12 +3,16 @@ import 'package:clot_shop/data/auth/models/user_info_model.dart';
 import 'package:clot_shop/data/auth/models/user_model.dart';
 import 'package:clot_shop/data/auth/source/auth_firebase_source.dart';
 import 'package:clot_shop/core/services/service_locator.dart';
+import 'package:clot_shop/domain/auth/entities/user_entity.dart';
 
 import 'package:dartz/dartz.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../domain/auth/repos/auth_repo.dart';
 
 class AuthRepoImpl implements AuthRepo {
+  final ImagePicker _picker = ImagePicker();
+
   @override
   Future<Either> signup(UserCreationReq user) async {
     return await sl<AuthFirebaseSource>().signup(user);
@@ -49,5 +53,32 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<Either> signOut() async {
     return await sl<AuthFirebaseSource>().signOut();
+  }
+
+  @override
+  Future<UserEntity?> pickImageFromCamera() async {
+    final XFile? pickedFile = await _picker.pickImage(
+      source: ImageSource.camera,
+    );
+    if (pickedFile != null) {
+      return UserEntity(image: pickedFile.path);
+    }
+    return null;
+  }
+
+  @override
+  Future<UserEntity?> pickImageFromGallery() async {
+    final XFile? pickedFile = await _picker.pickImage(
+      source: ImageSource.gallery,
+    );
+    if (pickedFile != null) {
+      return UserEntity(image: pickedFile.path);
+    }
+    return null;
+  }
+
+  @override
+  Future<void> removeImage() async {
+    return;
   }
 }

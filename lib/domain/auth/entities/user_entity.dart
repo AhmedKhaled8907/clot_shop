@@ -1,3 +1,4 @@
+
 class UserEntity {
   final String? firstName;
   final String? lastName;
@@ -7,10 +8,10 @@ class UserEntity {
   String? age;
 
   UserEntity({
-    required this.firstName,
-    required this.lastName,
-    required this.email,
-    required this.image,
+    this.firstName,
+    this.lastName,
+    this.email,
+    this.image,
     this.gender,
     this.age,
   });

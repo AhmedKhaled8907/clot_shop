@@ -1,9 +1,9 @@
+import 'package:clot_shop/common/widgets/images/name_images.dart';
 import 'package:clot_shop/domain/auth/entities/user_entity.dart';
 import 'package:clot_shop/presentation/auth/bloc/display_user_info_cubit/display_user_info_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/configs/assets/assets.dart';
 import '../../../core/configs/theme/app_colors.dart';
 
 class UserInfoPage extends StatelessWidget {
@@ -35,14 +35,23 @@ class UserInfoPage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Center(
-          child: Image.asset(
-            Assets.imagesSettingsProfile,
-            fit: BoxFit.fill,
-            height: 100,
-            width: 100,
-          ),
+          child: entity.image!.isEmpty
+              ? SizedBox(
+                  height: 100,
+                  width: 100,
+                  child: NameImage(
+                    user: entity,
+                    fontSize: 36,
+                  ),
+                )
+              : Image.network(
+                  entity.image!,
+                  fit: BoxFit.fill,
+                  height: 100,
+                  width: 100,
+                ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 24),
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 4),
           padding: const EdgeInsets.symmetric(

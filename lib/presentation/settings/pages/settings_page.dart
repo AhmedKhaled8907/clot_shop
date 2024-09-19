@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../common/widgets/app_bar/basic_app_bar.dart';
+import '../../auth/bloc/image_picker_cubit/image_picker_cubit.dart';
 import '../widgets/sign_out_button.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -20,6 +21,9 @@ class SettingsPage extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => DisplayUserInfoCubit()..displayUserInfo(),
+        ),
+        BlocProvider(
+          create: (context) => ImagePickerCubit(),
         ),
       ],
       child: Scaffold(

@@ -4,7 +4,7 @@ import 'package:clot_shop/data/auth/models/user_info_model.dart';
 import 'package:clot_shop/domain/auth/usecases/signin_usecase.dart';
 import 'package:clot_shop/presentation/auth/pages/forgot_password.dart';
 import 'package:clot_shop/presentation/auth/pages/signup.dart';
-import 'package:clot_shop/presentation/home/pages/home_page.dart';
+import 'package:clot_shop/presentation/root/pages/root_page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -77,7 +77,7 @@ class _SigninPageState extends State<SigninPage> {
                     if (state is ButtonSuccessState) {
                       AppNavigator.push(
                         context,
-                        const HomePage(),
+                        const RootPage(),
                       );
                     }
                   },
@@ -205,7 +205,6 @@ class _SigninPageState extends State<SigninPage> {
     });
   }
 
-
   Row _orDivider() {
     return const Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -240,34 +239,19 @@ class _SigninPageState extends State<SigninPage> {
         LogoSigninButton(
           logo: Assets.imagesApple,
           title: 'Apple',
-          onPressed: () {
-            AppNavigator.push(
-              context,
-              const SignupPage(),
-            );
-          },
+          onPressed: () {},
         ),
         const SizedBox(height: 20),
         LogoSigninButton(
           logo: Assets.imagesGoogle,
           title: 'Google',
-          onPressed: () {
-            AppNavigator.push(
-              context,
-              const SignupPage(),
-            );
-          },
+          onPressed: () {},
         ),
         const SizedBox(height: 20),
         LogoSigninButton(
           logo: Assets.imagesFacebook,
           title: 'Facebook',
-          onPressed: () {
-            AppNavigator.push(
-              context,
-              const SignupPage(),
-            );
-          },
+          onPressed: () {},
         ),
       ],
     );

@@ -75,6 +75,7 @@ class _SignupPageState extends State<SignupPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    const SizedBox(height: 36),
                     _signupText(context),
                     const SizedBox(height: 20),
                     _firstNameField(context),

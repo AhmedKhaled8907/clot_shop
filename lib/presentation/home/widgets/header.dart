@@ -1,9 +1,11 @@
 import 'package:clot_shop/core/configs/assets/assets.dart';
+import 'package:clot_shop/presentation/auth/bloc/image_picker_cubit/image_picker_cubit.dart';
 import 'package:clot_shop/presentation/home/bloc/user_info_display_cubit/user_info_display_cubit.dart';
 import 'package:clot_shop/presentation/settings/pages/favorites_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../common/helper/navigator/app_navigator.dart';
+import '../../../common/widgets/images/name_images.dart';
 import '../../../core/configs/theme/app_colors.dart';
 import '../../../domain/auth/entities/user_entity.dart';
 
@@ -16,6 +18,9 @@ class Header extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => UserInfoDisplayCubit()..displayUserInfo(),
+        ),
+        BlocProvider(
+          create: (context) => ImagePickerCubit(),
         ),
       ],
       child: BlocBuilder<UserInfoDisplayCubit, UserInfoDisplayState>(
@@ -40,18 +45,15 @@ class Header extends StatelessWidget {
   }
 
   Widget _profileImage(UserEntity user, BuildContext context) {
-    return Container(
-      height: 40,
-      width: 40,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: user.image!.isEmpty
-              ? const AssetImage(Assets.imagesProfile)
-              : NetworkImage(user.image!),
-        ),
-        color: AppColors.secondBackground,
-        shape: BoxShape.circle,
-      ),
+    return Center(
+      child: user.image!.isEmpty
+          ? NameImage(user: user)
+          : Image.network(
+              user.image!,
+              fit: BoxFit.fill,
+              height: 45,
+              width: 45,
+            ),
     );
   }
 

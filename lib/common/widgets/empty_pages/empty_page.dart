@@ -3,12 +3,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../common/helper/navigator/app_navigator.dart';
 import '../../../common/widgets/button/basic_app_button.dart';
-import '../../../core/configs/assets/assets.dart';
-import '../../home/pages/home_page.dart';
+import '../../../presentation/home/pages/home_page.dart';
 
-class CartEmpty extends StatelessWidget {
-  const CartEmpty({
-    super.key,
+class EmptyPage extends StatelessWidget {
+  final String title;
+  final String image;
+
+  const EmptyPage({
+    super.key, required this.title, required this.image,
   });
 
   @override
@@ -20,13 +22,13 @@ class CartEmpty extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
-              Assets.vectorsCartBag,
+              image,
               fit: BoxFit.fill,
             ),
             const SizedBox(height: 24),
-            const Text(
-              'Your Cart is Empty',
-              style: TextStyle(
+            Text(
+              title,
+              style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),

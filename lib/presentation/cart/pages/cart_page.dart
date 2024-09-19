@@ -1,11 +1,11 @@
 import 'package:clot_shop/common/widgets/app_bar/basic_app_bar.dart';
+import 'package:clot_shop/common/widgets/empty_pages/empty_page.dart';
+import 'package:clot_shop/core/configs/assets/assets.dart';
 import 'package:clot_shop/presentation/cart/bloc/cart_product_display_cubit/cart_product_display_cubit.dart';
 import 'package:clot_shop/presentation/cart/widgets/cart_list_view.dart';
 import 'package:clot_shop/presentation/cart/widgets/price_cost.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../widgets/cart_empty.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -35,7 +35,10 @@ class CartPage extends StatelessWidget {
             }
             if (state is CartProductDisplayLoaded) {
               if (state.products.isEmpty) {
-                return const CartEmpty();
+                return const EmptyPage(
+                  image: Assets.vectorsCartBag,
+                  title: 'Your cart is empty',
+                );
               }
               return Column(
                 children: [

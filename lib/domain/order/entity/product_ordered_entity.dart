@@ -1,4 +1,6 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class ProductOrderedEntity {
   final String productId;
   final String productTitle;
@@ -6,9 +8,9 @@ class ProductOrderedEntity {
   final int productQuantity;
   final String productSize;
   final String productColor;
-  final double productPrice;
-  final double totalPrice;
-  final String createAt;
+  final num productPrice;
+  final num totalPrice;
+  final Timestamp createAt;
   final String id;
 
   ProductOrderedEntity({

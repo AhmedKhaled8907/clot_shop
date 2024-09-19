@@ -1,4 +1,5 @@
 import 'package:clot_shop/domain/order/entity/product_ordered_entity.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProductOrderedModel {
   final String productId;
@@ -7,9 +8,9 @@ class ProductOrderedModel {
   final int productQuantity;
   final String productSize;
   final String productColor;
-  final double productPrice;
-  final double totalPrice;
-  final String createAt;
+  final num productPrice;
+  final num totalPrice;
+  final Timestamp createAt;
   final String id;
 
   ProductOrderedModel({
@@ -33,9 +34,9 @@ class ProductOrderedModel {
       productQuantity: map['productQuantity'] as int,
       productSize: map['productSize'] as String,
       productColor: map['productColor'] as String,
-      productPrice: map['productPrice'] as double,
-      totalPrice: map['totalPrice'] as double,
-      createAt: map['createAt'] as String,
+      productPrice: map['productPrice'] as num,
+      totalPrice: map['totalPrice'] as num,
+      createAt: map['createAt'] as Timestamp,
       id: map['id'] as String,
     );
   }

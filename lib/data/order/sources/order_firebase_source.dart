@@ -11,6 +11,7 @@ abstract class OrderFirebaseSource {
   Future<Either> deleteProductById(String productId);
   Future<Either> deleteCart();
   Future<Either> orderRegistration(OrderRegistrationReq order);
+  Future<Either> getOrders();
 }
 
 class OrderFirebaseSourceImpl extends OrderFirebaseSource {
@@ -117,6 +118,23 @@ class OrderFirebaseSourceImpl extends OrderFirebaseSource {
       return const Right('Order placed successfully!');
     } on FirebaseAuthException catch (e) {
       return Left(e);
+    }
+  }
+
+  @override
+  Future<Either> getOrders() async {
+    var uid = firebase.currentUser!.uid;
+    try {
+      var result = await firestore
+          .collection('users')
+          .doc(uid)
+          .collection('orders')
+          .get();
+      return Right(
+        result.docs.map((e) => e.data()).toList(),
+      );
+    } catch (e) {
+      return const Left('Try again later!');
     }
   }
 }

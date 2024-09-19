@@ -1,6 +1,6 @@
 import 'package:clot_shop/core/configs/assets/assets.dart';
 import 'package:clot_shop/presentation/settings/pages/favorites_page.dart';
-import 'package:clot_shop/presentation/settings/pages/orders_page.dart';
+import 'package:clot_shop/presentation/orders/pages/orders_page.dart';
 import 'package:clot_shop/presentation/settings/pages/user_info_page.dart';
 import 'package:clot_shop/presentation/settings/widgets/settings_card.dart';
 import 'package:flutter/material.dart';

@@ -1,3 +1,4 @@
+import 'package:clot_shop/data/order/models/order_model.dart';
 import 'package:clot_shop/data/order/models/order_registration_req.dart';
 import 'package:clot_shop/data/order/models/product_ordered_model.dart';
 import 'package:clot_shop/data/order/sources/order_firebase_source.dart';
@@ -42,6 +43,17 @@ class OrderRepoImpl extends OrderRepo {
     return returnedData.fold(
       (error) => Left(error),
       (data) => Right((data)),
+    );
+  }
+
+  @override
+  Future<Either> getOrders() async {
+    var returnedData = await sl<OrderFirebaseSource>().getOrders();
+    return returnedData.fold(
+      (error) => Left(error),
+      (data) => Right(List.from(data)
+          .map((e) => OrderModel.fromMap(e).toEntity())
+          .toList()),
     );
   }
 }

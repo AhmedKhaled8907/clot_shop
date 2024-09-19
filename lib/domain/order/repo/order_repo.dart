@@ -8,4 +8,5 @@ abstract class OrderRepo {
   Future<Either> deleteProductById(String productId);
   Future<Either> deleteCart();
   Future<Either> orderRegistration(OrderRegistrationReq order);
+  Future<Either> getOrders();
 }

@@ -8,11 +8,13 @@ import '../../../common/widgets/button/basic_app_button.dart';
 class EmptyPage extends StatelessWidget {
   final String title;
   final String image;
+  final bool hideButton;
 
   const EmptyPage({
     super.key,
     required this.title,
     required this.image,
+    this.hideButton = true,
   });
 
   @override
@@ -36,23 +38,24 @@ class EmptyPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
-            BasicAppButton(
-              width: 0,
-              content: const Text(
-                'Continue Shopping',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
+            if (!hideButton)
+              BasicAppButton(
+                width: 0,
+                content: const Text(
+                  'Continue Shopping',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
+                onPressed: () {
+                  AppNavigator.pushReplacement(
+                    context,
+                    const RootPage(),
+                  );
+                },
               ),
-              onPressed: () {
-                AppNavigator.pushReplacement(
-                  context,
-                  const RootPage(),
-                );
-              },
-            ),
           ],
         ),
       ),

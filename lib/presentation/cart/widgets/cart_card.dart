@@ -1,8 +1,9 @@
 import 'package:clot_shop/core/configs/theme/app_colors.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../common/helper/images/image_display_helper.dart';
 import '../../../domain/order/entity/product_ordered_entity.dart';
+import '../bloc/cart_product_display_cubit/cart_product_display_cubit.dart';
 
 class CartCard extends StatelessWidget {
   final ProductOrderedEntity entity;
@@ -10,52 +11,93 @@ class CartCard extends StatelessWidget {
 
   const CartCard({
     required this.entity,
-    super.key,
     required this.index,
+    super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.2,
-      padding: const EdgeInsets.all(8),
-      margin: const EdgeInsets.symmetric(horizontal: 16),
-      decoration: BoxDecoration(
-        color: AppColors.secondBackground,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            flex: 4,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  flex: 3,
-                  child: _image(),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  flex: 6,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _title(),
-                      _size(),
-                      _color(),
-                      _quantity(),
-                      _totalPrice(),
-                    ],
+    return Dismissible(
+      key: Key(entity.productId.toString()),
+      direction: DismissDirection.horizontal,
+      background: _buildDismissibleBackground(),
+      onDismissed: (direction) {
+        context.read<CartProductDisplayCubit>().deleteProductById(entity);
+      },
+      child: Container(
+        height: MediaQuery.of(context).size.height * 0.2,
+        padding: const EdgeInsets.all(8),
+        margin: const EdgeInsets.symmetric(horizontal: 16),
+        decoration: BoxDecoration(
+          color: AppColors.secondBackground,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              flex: 4,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: _image(),
                   ),
-                )
-              ],
+                  const SizedBox(width: 16),
+                  Expanded(
+                    flex: 6,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _title(),
+                        _size(),
+                        _color(),
+                        _quantity(),
+                        _totalPrice(),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDismissibleBackground() {
+    return Row(
+      children: [
+        // Left side background when swiping to the right
+        Expanded(
+          child: Container(
+            alignment: Alignment.centerLeft,
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            color: Colors.redAccent,
+            child: const Icon(
+              Icons.clear,
+              color: Colors.white,
+              size: 32,
             ),
           ),
-        ],
-      ),
+        ),
+        // Right side background when swiping to the left
+        Expanded(
+          child: Container(
+            alignment: Alignment.centerRight,
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            color: Colors.redAccent,
+            child: const Icon(
+              Icons.clear,
+              color: Colors.white,
+              size: 32,
+            ),
+          ),
+        ),
+      ],
     );
   }
 

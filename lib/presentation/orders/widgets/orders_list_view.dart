@@ -23,6 +23,7 @@ class OrdersListView extends StatelessWidget {
         if (state is OrdersDisplayLoaded) {
           if (state.orders.isEmpty) {
             return const EmptyPage(
+              hideButton: false,
               image: Assets.imagesCheckOut,
               title: 'No orders yet',
             );

@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class AddToCartReq {
   final String productId;
   final String productTitle;
@@ -7,7 +9,7 @@ class AddToCartReq {
   final String productColor;
   final double productPrice;
   final double totalPrice;
-  final String createAt;
+  final Timestamp createAt;
 
   AddToCartReq({
     required this.productId,

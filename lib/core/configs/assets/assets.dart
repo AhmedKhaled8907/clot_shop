@@ -62,6 +62,10 @@ class Assets {
   /// assets/images/order_selected.png
   static const String imagesOrderSelected = "assets/images/order_selected.png";
 
+  /// Assets for imagesOrderWhite
+  /// assets/images/order_white.png
+  static const String imagesOrderWhite = "assets/images/order_white.png";
+
   /// Assets for imagesProfile
   /// assets/images/profile.png
   static const String imagesProfile = "assets/images/profile.png";

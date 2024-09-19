@@ -6,6 +6,7 @@ import 'package:clot_shop/data/order/models/add_to_cart_req.dart';
 import 'package:clot_shop/domain/order/usecases/add_to_cart_usecase.dart';
 import 'package:clot_shop/presentation/cart/pages/cart_page.dart';
 import 'package:clot_shop/presentation/product_details/bloc/product_quantity_cubit.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -100,7 +101,7 @@ class AddToCart extends StatelessWidget {
         .colors[context.read<ProductColorSelectionCubit>().selectedIndex].title;
     var productPrice = ProductPriceHelper.provideCurrentPrice(entity);
     var totalPrice = productQuantity * productPrice;
-    var createAt = DateTime.now().toString();
+    var createAt = Timestamp.now();
 
     context.read<ButtonStateCubit>().execute(
           usecase: AddToCartUsecase(),

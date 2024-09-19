@@ -36,21 +36,20 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [action ?? Container()],
       leading: hideBack
           ? null
-          : IconButton(
-              onPressed: onPressed ??
+          : GestureDetector(
+              onTap: onPressed ??
                   () {
                     Navigator.pop(context);
                   },
-              icon: Container(
-                height: 75,
-                width: 75,
+              child: Container(
+                margin: const EdgeInsets.only(left: 8.0),
                 decoration: const BoxDecoration(
                   color: AppColors.secondBackground,
                   shape: BoxShape.circle,
                 ),
                 child: const Icon(
                   Icons.arrow_back_ios_new,
-                  size: 16,
+                  size: 20,
                   color: Colors.white,
                 ),
               ),

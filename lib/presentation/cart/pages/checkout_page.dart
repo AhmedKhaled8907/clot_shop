@@ -3,6 +3,7 @@ import 'package:clot_shop/common/widgets/button/basic_reactive_button.dart';
 import 'package:clot_shop/data/order/models/order_registration_req.dart';
 import 'package:clot_shop/domain/order/entity/product_ordered_entity.dart';
 import 'package:clot_shop/domain/order/usecases/order_registration_usecase.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -157,10 +158,9 @@ class _CheckoutState extends State<Checkout> {
           size: 36,
         ),
       ),
-      keyboardType: TextInputType.text,
-      validator: (value) {
-        return 'Shipping Address can\'t be empty';
-      },
+      // validator: (value) {
+      //   return 'Shipping Address can\'t be empty';
+      // },
       onFieldSubmitted: (value) {
         return FocusScope.of(context).requestFocus(_paymentFocusNode);
       },
@@ -180,9 +180,9 @@ class _CheckoutState extends State<Checkout> {
           size: 36,
         ),
       ),
-      validator: (value) {
-        return 'Payment Method can\'t be empty';
-      },
+      // validator: (value) {
+      //   return 'Payment Method can\'t be empty';
+      // },
       onFieldSubmitted: (value) {},
     );
   }
@@ -296,7 +296,7 @@ class _CheckoutState extends State<Checkout> {
                   shippingAddress: _addressController.text,
                   paymentMethod: _paymentController.text,
                   products: products,
-                  createdAt: DateTime.now().toString(),
+                  createdAt: Timestamp.now(),
                   itemsCount: products.length,
                   totalPrice: total,
                 ),

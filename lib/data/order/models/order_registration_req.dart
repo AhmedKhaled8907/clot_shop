@@ -1,11 +1,12 @@
 import 'package:clot_shop/data/order/models/product_ordered_model.dart';
 import 'package:clot_shop/domain/order/entity/product_ordered_entity.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class OrderRegistrationReq {
   final String shippingAddress;
   final String paymentMethod;
   final List<ProductOrderedEntity> products;
-  final String createdAt;
+  final Timestamp createdAt;
   final int itemsCount;
   final double totalPrice;
 

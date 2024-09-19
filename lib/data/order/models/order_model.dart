@@ -10,7 +10,7 @@ class OrderModel {
   final Timestamp createdAt;
   final int itemsCount;
   final double totalPrice;
-  final String code;
+  final String? code;
   final List<OrderStatusModel> orderStatus;
 
   OrderModel({
@@ -34,7 +34,7 @@ class OrderModel {
       createdAt: map['createdAt'] as Timestamp,
       itemsCount: map['itemsCount'] as int,
       totalPrice: map['totalPrice'] as double,
-      code: map['code'] as String,
+      code:  map['code'] != null ? map['code'] as String : '456231',
       orderStatus: List.from(
         (map['orderStatus']).map((e) => OrderStatusModel.fromMap(e)),
       ),
@@ -51,7 +51,7 @@ extension OrderXModel on OrderModel {
       createdAt: createdAt,
       itemsCount: itemsCount,
       totalPrice: totalPrice,
-      code: code,
+      code: code!,
       orderStatus: orderStatus.map((e) => e.toEntity()).toList(),
     );
   }

@@ -4,19 +4,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../domain/order/entity/order_status_entity.dart';
 
 class OrderStatusModel {
-  final String? code;
+  final String? title;
   final bool? done;
   final Timestamp? createdAt;
 
   OrderStatusModel({
-    required this.code,
+    required this.title,
     required this.done,
     required this.createdAt,
   });
 
   factory OrderStatusModel.fromMap(Map<String, dynamic> map) {
     return OrderStatusModel(
-      code: map['code'] != null ? map['code'] as String : '84584',
+      title: map['title'] != null ? map['title'] as String : 'delivered',
       done: map['done'] != null ? map['done'] as bool : true,
       createdAt: map['createdAt'] != null
           ? map['createdAt'] as Timestamp
@@ -28,7 +28,7 @@ class OrderStatusModel {
 extension OrderStatusXModel on OrderStatusModel {
   OrderStatusEntity toEntity() {
     return OrderStatusEntity(
-      code: code,
+      title: title,
       done: done,
       createdAt: createdAt,
     );

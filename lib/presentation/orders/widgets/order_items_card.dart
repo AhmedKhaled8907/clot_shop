@@ -19,7 +19,7 @@ class OrderItemsCard extends StatelessWidget {
     return Container(
       height: 100,
       padding: const EdgeInsets.all(8),
-      margin: const EdgeInsets.symmetric(horizontal: 16),
+      margin: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
         color: AppColors.secondBackground,
         borderRadius: BorderRadius.circular(8),

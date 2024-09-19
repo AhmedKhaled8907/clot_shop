@@ -33,10 +33,14 @@ import '../../data/product/repo/product_repo_impl.dart';
 import '../../domain/auth/usecases/password_reset_usecase.dart';
 import '../../domain/category/repos/category_repo.dart';
 import '../../domain/product/usecases/get_product_by_title_usecase.dart';
+import '../../presentation/root/bloc/bottom_nav_bar_cubit/bottom_nav_bar_cubit.dart';
 
 final sl = GetIt.instance;
 
 void serviceLocator() {
+  // blocs
+  sl.registerFactory(() => BottomNavBarCubit());
+
   // sources
   sl.registerSingleton<AuthFirebaseSource>(
     AuthFirebaseSourceImpl(),

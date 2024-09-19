@@ -18,6 +18,7 @@ class FavoritesPage extends StatelessWidget {
             ..getProducts(),
       child: Scaffold(
         appBar: const BasicAppBar(
+          hideBack: true,
           title: Text(
             'Favorites',
             style: TextStyle(
@@ -58,7 +59,7 @@ class FavoritesPage extends StatelessWidget {
                 ),
               );
             }
-            return Container(); 
+            return Container();
           },
         ),
       ),

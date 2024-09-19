@@ -14,6 +14,7 @@ class OrdersPage extends StatelessWidget {
       create: (context) => OrdersDisplayCubit()..displayOrders(),
       child: const Scaffold(
         appBar: BasicAppBar(
+          hideBack: true,
           title: Text(
             'Orders',
             style: TextStyle(
@@ -27,5 +28,3 @@ class OrdersPage extends StatelessWidget {
     );
   }
 }
-
-

@@ -1,13 +1,10 @@
 import 'package:clot_shop/presentation/auth/bloc/display_user_info_cubit/display_user_info_cubit.dart';
 import 'package:clot_shop/presentation/auth/bloc/sign_out_cubit/sign_out_cubit.dart';
-import 'package:clot_shop/presentation/settings/pages/favorites_page.dart';
-import 'package:clot_shop/presentation/orders/pages/orders_page.dart';
 import 'package:clot_shop/presentation/settings/pages/user_info_page.dart';
 import 'package:clot_shop/presentation/settings/widgets/settings_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../common/helper/navigator/app_navigator.dart';
 import '../../../common/widgets/app_bar/basic_app_bar.dart';
 import '../widgets/sign_out_button.dart';
 

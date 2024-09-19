@@ -1,6 +1,6 @@
+import 'package:clot_shop/presentation/cart/pages/cart_page.dart';
 import 'package:clot_shop/presentation/home/pages/home_page.dart';
 import 'package:clot_shop/presentation/orders/pages/orders_page.dart';
-import 'package:clot_shop/presentation/settings/pages/favorites_page.dart';
 import 'package:clot_shop/presentation/settings/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +21,7 @@ class BottomNavBarCubit extends Cubit<BottomNavBarState> {
   List<Widget> views = [
     const HomePage(),
     const OrdersPage(),
-    const FavoritesPage(),
+    const CartPage(),
     const SettingsPage(),
   ];
 
@@ -54,16 +54,16 @@ class BottomNavBarCubit extends Cubit<BottomNavBarState> {
         ),
         BottomNavigationBarItem(
           icon: Image.asset(
-            Assets.imagesHome,
+            Assets.imagesCart,
             fit: BoxFit.fill,
             height: 24,
           ),
           activeIcon: Image.asset(
-            Assets.imagesHomeSelected,
+            Assets.imagesCartSelected,
             fit: BoxFit.fill,
             height: 24,
           ),
-          label: 'Favorites',
+          label: 'Cart',
         ),
         BottomNavigationBarItem(
           icon: Image.asset(

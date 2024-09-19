@@ -41,7 +41,10 @@ class CartListView extends StatelessWidget {
               return const SizedBox(height: 12);
             },
             itemBuilder: (BuildContext context, int index) {
-              return CartCard(entity: entities[index]);
+              return CartCard(
+                entity: entities[index],
+                index: index,
+              );
             },
           ),
         ),

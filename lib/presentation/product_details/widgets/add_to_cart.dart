@@ -4,8 +4,8 @@ import 'package:clot_shop/common/widgets/button/basic_reactive_button.dart';
 import 'package:clot_shop/core/configs/theme/app_colors.dart';
 import 'package:clot_shop/data/order/models/add_to_cart_req.dart';
 import 'package:clot_shop/domain/order/usecases/add_to_cart_usecase.dart';
-import 'package:clot_shop/presentation/cart/pages/cart_page.dart';
 import 'package:clot_shop/presentation/product_details/bloc/product_quantity_cubit.dart';
+import 'package:clot_shop/presentation/root/pages/root_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,7 +24,13 @@ class AddToCart extends StatelessWidget {
     return BlocConsumer<ButtonStateCubit, ButtonState>(
       listener: (context, state) {
         if (state is ButtonSuccessState) {
-          AppNavigator.push(context, const CartPage());
+          var snackbar = const SnackBar(
+            content: Text('Item added to Cart'),
+            behavior: SnackBarBehavior.floating,
+          );
+          ScaffoldMessenger.of(context).clearSnackBars();
+          ScaffoldMessenger.of(context).showSnackBar(snackbar);
+          AppNavigator.push(context, const RootPage());
         }
         if (state is ButtonFailureState) {
           var snackbar = SnackBar(

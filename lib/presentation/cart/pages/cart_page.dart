@@ -20,6 +20,7 @@ class CartPage extends StatelessWidget {
       ],
       child: Scaffold(
         appBar: const BasicAppBar(
+          hideBack: true,
           title: Text(
             'Cart',
             style: TextStyle(

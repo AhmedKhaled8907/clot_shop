@@ -17,31 +17,28 @@ class ProductFavoriteButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      top: 5,
-      right: 5,
-      child: InkWell(
-        onTap: () {
-          context.read<FavoriteProductCubit>().addOrRemoveFavoriteProduct(
-                entity: entity,
-              );
-        },
-        borderRadius: BorderRadius.circular(50),
-        child: Container(
-          height: height,
-          width: height,
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-            color: AppColors.secondBackground,
-          ),
-          child: BlocBuilder<FavoriteProductCubit, bool>(
-            builder: (context, state) {
-              return Icon(
-                state ? Icons.favorite : Icons.favorite_border,
-                color: state ? Colors.red : Colors.white,
-              );
-            },
-          ),
+    return InkWell(
+      onTap: () {
+        context.read<FavoriteProductCubit>().addOrRemoveFavoriteProduct(
+              entity: entity,
+            );
+            context.read<FavoriteProductCubit>().isFavorite(productId: entity.productId);
+      },
+      borderRadius: BorderRadius.circular(50),
+      child: Container(
+        height: height,
+        width: height,
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          color: AppColors.secondBackground,
+        ),
+        child: BlocBuilder<FavoriteProductCubit, bool>(
+          builder: (context, state) {
+            return Icon(
+              state ? Icons.favorite : Icons.favorite_border,
+              color: state ? Colors.red : Colors.white,
+            );
+          },
         ),
       ),
     );

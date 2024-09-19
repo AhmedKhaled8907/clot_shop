@@ -1,16 +1,18 @@
+import 'package:clot_shop/presentation/root/pages/root_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../common/helper/navigator/app_navigator.dart';
 import '../../../common/widgets/button/basic_app_button.dart';
-import '../../../presentation/home/pages/home_page.dart';
 
 class EmptyPage extends StatelessWidget {
   final String title;
   final String image;
 
   const EmptyPage({
-    super.key, required this.title, required this.image,
+    super.key,
+    required this.title,
+    required this.image,
   });
 
   @override
@@ -47,7 +49,7 @@ class EmptyPage extends StatelessWidget {
               onPressed: () {
                 AppNavigator.pushReplacement(
                   context,
-                  const HomePage(),
+                  const RootPage(),
                 );
               },
             ),

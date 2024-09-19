@@ -14,33 +14,30 @@ class Categories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CategoryDisplayCubit()..getCategories(),
-      child: BlocBuilder<CategoryDisplayCubit, CategoryDisplayState>(
-        builder: (context, state) {
-          if (state is CategoryDisplayLoading) {
-            return const CircularProgressIndicator();
-          }
-          if (state is CategoryDisplaySuccess) {
-            return Column(
-              children: [
-                SeeAllText(
-                  title: 'Categories',
-                  onTap: () {
-                    AppNavigator.push(
-                      context,
-                      const AllCategoriesPage(),
-                    );
-                  },
-                ),
-                const SizedBox(height: 20),
-                _categories(state.category, context),
-              ],
-            );
-          }
-          return Container();
-        },
-      ),
+    return BlocBuilder<CategoryDisplayCubit, CategoryDisplayState>(
+      builder: (context, state) {
+        if (state is CategoryDisplayLoading) {
+          return const CircularProgressIndicator();
+        }
+        if (state is CategoryDisplaySuccess) {
+          return Column(
+            children: [
+              SeeAllText(
+                title: 'Categories',
+                onTap: () {
+                  AppNavigator.push(
+                    context,
+                    const AllCategoriesPage(),
+                  );
+                },
+              ),
+              const SizedBox(height: 20),
+              _categories(state.category, context),
+            ],
+          );
+        }
+        return Container();
+      },
     );
   }
 

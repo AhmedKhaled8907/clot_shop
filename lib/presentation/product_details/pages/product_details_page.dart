@@ -34,8 +34,9 @@ class ProductDetailsPage extends StatelessWidget {
         BlocProvider(create: (context) => ProductSizeSelectionCubit()),
         BlocProvider(create: (context) => ButtonStateCubit()),
         BlocProvider(
-            create: (context) => FavoriteProductCubit()
-              ..isFavorite(productId: entity.productId)),
+          create: (context) =>
+              FavoriteProductCubit()..isFavorite(productId: entity.productId),
+        ),
       ],
       child: Scaffold(
         appBar: BasicAppBar(

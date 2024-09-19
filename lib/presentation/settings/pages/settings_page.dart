@@ -1,9 +1,12 @@
 import 'package:clot_shop/core/configs/assets/assets.dart';
+import 'package:clot_shop/presentation/auth/bloc/sign_out_cubit/sign_out_cubit.dart';
+import 'package:clot_shop/presentation/auth/pages/signin.dart';
 import 'package:clot_shop/presentation/settings/pages/favorites_page.dart';
 import 'package:clot_shop/presentation/orders/pages/orders_page.dart';
 import 'package:clot_shop/presentation/settings/pages/user_info_page.dart';
 import 'package:clot_shop/presentation/settings/widgets/settings_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../common/helper/navigator/app_navigator.dart';
 import '../../../common/widgets/app_bar/basic_app_bar.dart';
@@ -83,19 +86,47 @@ class SettingsPage extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8),
-        child: TextButton(
-          onPressed: () {},
-          child: const Text(
-            'Sign Out',
-            style: TextStyle(
-              color: Colors.redAccent,
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
+      bottomNavigationBar: const SignOutButton(),
+    );
+  }
+}
+
+class SignOutButton extends StatelessWidget {
+  const SignOutButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => SignOutCubit(),
+      child: BlocListener<SignOutCubit, SignOutState>(
+        listener: (context, state) {
+          if (state is SignOutSuccess) {
+            AppNavigator.pushReplacement(
+              context,
+              const SigninPage(),
+            );
+          }
+        },
+        child: Builder(builder: (context) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: TextButton(
+              onPressed: () {
+                context.read<SignOutCubit>().signOut();
+              },
+              child: const Text(
+                'Sign Out',
+                style: TextStyle(
+                  color: Colors.redAccent,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
             ),
-          ),
-        ),
+          );
+        }),
       ),
     );
   }

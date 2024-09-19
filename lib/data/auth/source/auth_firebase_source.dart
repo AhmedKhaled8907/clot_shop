@@ -12,20 +12,22 @@ abstract class AuthFirebaseSource {
   Future<Either> sendPasswordResetEmail(String email);
   Future<bool> isLoggedIn();
   Future<Either> getUser();
+  Future<Either> signOut();
 }
 
 class AuthFirebaseSourceImpl implements AuthFirebaseSource {
-  var auth = FirebaseAuth.instance;
-  var fireStore = FirebaseFirestore.instance;
+  final _auth = FirebaseAuth.instance;
+  final _fireStore = FirebaseFirestore.instance;
+
   @override
   Future<Either> signup(UserCreationReq user) async {
     try {
-      var returnedData = await auth.createUserWithEmailAndPassword(
+      var returnedData = await _auth.createUserWithEmailAndPassword(
         email: user.email!,
         password: user.password!,
       );
       var uid = returnedData.user!.uid;
-      fireStore.collection('users').doc(uid).set({
+      _fireStore.collection('users').doc(uid).set({
         'firstName': user.firstName,
         'lastName': user.lastName,
         'email': user.email,
@@ -50,7 +52,7 @@ class AuthFirebaseSourceImpl implements AuthFirebaseSource {
   @override
   Future<Either> getAges() async {
     try {
-      var returnedData = await fireStore
+      var returnedData = await _fireStore
           .collection('ages')
           .orderBy(
             descending: false,
@@ -66,14 +68,14 @@ class AuthFirebaseSourceImpl implements AuthFirebaseSource {
   @override
   Future<Either> signin(UserInfoModel user) async {
     try {
-      var returnedData = await auth.signInWithEmailAndPassword(
+      var returnedData = await _auth.signInWithEmailAndPassword(
         email: user.email!,
         password: user.password!,
       );
 
       // to make the password change in the database if the user resets the password
       var uid = returnedData.user!.uid;
-      fireStore.collection('users').doc(uid).update({
+      _fireStore.collection('users').doc(uid).update({
         'password': user.password,
       });
 
@@ -95,7 +97,7 @@ class AuthFirebaseSourceImpl implements AuthFirebaseSource {
   Future<Either> sendPasswordResetEmail(String email) async {
     try {
       // Step 1: Check if the email exists in Firestore
-      var querySnapshot = await fireStore
+      var querySnapshot = await _fireStore
           .collection('users')
           .where('email', isEqualTo: email)
           .get();
@@ -105,7 +107,7 @@ class AuthFirebaseSourceImpl implements AuthFirebaseSource {
       }
 
       // Step 2: Send the password reset email if the email exists
-      await auth.sendPasswordResetEmail(email: email);
+      await _auth.sendPasswordResetEmail(email: email);
       return const Right('Password Reset Email sent');
     } on FirebaseAuthException catch (e) {
       String message = '';
@@ -122,7 +124,7 @@ class AuthFirebaseSourceImpl implements AuthFirebaseSource {
 
   @override
   Future<bool> isLoggedIn() async {
-    if (auth.currentUser != null) {
+    if (_auth.currentUser != null) {
       return true;
     } else {
       return false;
@@ -132,13 +134,23 @@ class AuthFirebaseSourceImpl implements AuthFirebaseSource {
   @override
   Future<Either> getUser() async {
     try {
-      var currentUser = auth.currentUser;
-      var userData = await fireStore
+      var currentUser = _auth.currentUser;
+      var userData = await _fireStore
           .collection('users')
           .doc(currentUser!.uid)
           .get()
           .then((value) => value.data());
       return Right(userData);
+    } catch (e) {
+      return const Left('Try again later!');
+    }
+  }
+
+  @override
+  Future<Either> signOut() async {
+    try {
+      await _auth.signOut();
+      return const Right('Signed Out was Successful');
     } catch (e) {
       return const Left('Try again later!');
     }

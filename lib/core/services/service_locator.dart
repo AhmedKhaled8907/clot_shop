@@ -6,6 +6,7 @@ import 'package:clot_shop/domain/auth/repos/auth_repo.dart';
 import 'package:clot_shop/domain/auth/usecases/get_ages_usecase.dart';
 import 'package:clot_shop/domain/auth/usecases/get_user_usecase.dart';
 import 'package:clot_shop/domain/auth/usecases/is_logged_in_usecase.dart';
+import 'package:clot_shop/domain/auth/usecases/sign_out_usecase.dart';
 import 'package:clot_shop/domain/auth/usecases/signin_usecase.dart';
 import 'package:clot_shop/domain/auth/usecases/signup_usecase.dart';
 import 'package:clot_shop/domain/category/usecases/get_categories_usecase.dart';
@@ -84,6 +85,9 @@ void serviceLocator() {
   );
   sl.registerSingleton<GetUserUsecase>(
     GetUserUsecase(),
+  );
+  sl.registerSingleton<SignOutUsecase>(
+    SignOutUsecase(),
   );
 
   // categories

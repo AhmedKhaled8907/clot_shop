@@ -45,4 +45,9 @@ class AuthRepoImpl implements AuthRepo {
       );
     });
   }
+
+  @override
+  Future<Either> signOut() async {
+    return await sl<AuthFirebaseSource>().signOut();
+  }
 }

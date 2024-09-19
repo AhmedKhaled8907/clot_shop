@@ -1,7 +1,7 @@
 import 'package:clot_shop/common/helper/bloc/product/cubit/product_cubit.dart';
 import 'package:clot_shop/domain/product/entities/product_entity.dart';
 import 'package:clot_shop/domain/product/usecases/get_new_in_usecase.dart';
-import 'package:clot_shop/service_locator.dart';
+import 'package:clot_shop/core/services/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

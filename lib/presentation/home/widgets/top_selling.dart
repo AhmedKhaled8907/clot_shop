@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../common/helper/bloc/product/cubit/product_cubit.dart';
 import '../../../common/widgets/texts/see_all_text.dart';
-import '../../../service_locator.dart';
+import '../../../core/services/service_locator.dart';
 
 class TopSelling extends StatelessWidget {
   const TopSelling({super.key});

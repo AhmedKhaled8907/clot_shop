@@ -3,7 +3,7 @@ import 'package:clot_shop/domain/product/usecases/add_or_remove_favorite_product
 import 'package:clot_shop/domain/product/usecases/is_favorite_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../service_locator.dart';
+import '../../../../../core/services/service_locator.dart';
 
 class FavoriteProductCubit extends Cubit<bool> {
   FavoriteProductCubit() : super(false);

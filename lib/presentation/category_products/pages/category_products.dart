@@ -2,7 +2,7 @@ import 'package:clot_shop/common/helper/bloc/product/cubit/product_cubit.dart';
 import 'package:clot_shop/common/widgets/product/product_grid_view.dart';
 import 'package:clot_shop/domain/category/entities/category_entity.dart';
 import 'package:clot_shop/domain/product/usecases/get_products_by_categories_usecase.dart';
-import 'package:clot_shop/service_locator.dart';
+import 'package:clot_shop/core/services/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -2,7 +2,7 @@ import 'package:clot_shop/data/auth/models/user_creation_req.dart';
 import 'package:clot_shop/data/auth/models/user_info_model.dart';
 import 'package:clot_shop/data/auth/models/user_model.dart';
 import 'package:clot_shop/data/auth/source/auth_firebase_source.dart';
-import 'package:clot_shop/service_locator.dart';
+import 'package:clot_shop/core/services/service_locator.dart';
 
 import 'package:dartz/dartz.dart';
 

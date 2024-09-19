@@ -1,9 +1,9 @@
-import 'package:clot_shop/app_bloc_observer.dart';
+import 'package:clot_shop/core/app_bloc_observer.dart';
 import 'package:clot_shop/core/configs/theme/app_theme.dart';
 import 'package:clot_shop/firebase_options.dart';
 import 'package:clot_shop/presentation/splash/pages/splash.dart';
 import 'package:clot_shop/presentation/splash/splash_cubit/splash_cubit.dart';
-import 'package:clot_shop/service_locator.dart';
+import 'package:clot_shop/core/services/service_locator.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

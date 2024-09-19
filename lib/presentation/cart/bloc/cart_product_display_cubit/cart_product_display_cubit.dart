@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../domain/order/usecases/delete_product_by_id_usecase.dart';
 import '../../../../domain/order/usecases/get_cart_products_usecase.dart';
-import '../../../../service_locator.dart';
+import '../../../../core/services/service_locator.dart';
 
 part 'cart_product_display_state.dart';
 

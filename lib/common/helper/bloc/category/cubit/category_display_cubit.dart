@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../domain/category/entities/category_entity.dart';
 import '../../../../../domain/category/repos/category_repo.dart';
-import '../../../../../service_locator.dart';
+import '../../../../../core/services/service_locator.dart';
 
 part 'category_display_state.dart';
 

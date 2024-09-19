@@ -2,7 +2,7 @@ import 'package:clot_shop/domain/product/entities/product_entity.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../domain/product/repos/product_repo.dart';
-import '../../../service_locator.dart';
+import '../../../core/services/service_locator.dart';
 import '../models/product_model.dart';
 import '../source/Product_firebase_source.dart';
 

@@ -24,13 +24,13 @@ import 'package:clot_shop/domain/product/usecases/get_top_selling_usecase.dart';
 import 'package:clot_shop/domain/product/usecases/is_favorite_usecase.dart';
 import 'package:get_it/get_it.dart';
 
-import 'data/categories/repo/category_repo_impl.dart';
-import 'data/categories/source/category_firebase_source.dart';
-import 'data/order/repo/order_repo_impl.dart';
-import 'data/product/repo/product_repo_impl.dart';
-import 'domain/auth/usecases/password_reset_usecase.dart';
-import 'domain/category/repos/category_repo.dart';
-import 'domain/product/usecases/get_product_by_title_usecase.dart';
+import '../../data/categories/repo/category_repo_impl.dart';
+import '../../data/categories/source/category_firebase_source.dart';
+import '../../data/order/repo/order_repo_impl.dart';
+import '../../data/product/repo/product_repo_impl.dart';
+import '../../domain/auth/usecases/password_reset_usecase.dart';
+import '../../domain/category/repos/category_repo.dart';
+import '../../domain/product/usecases/get_product_by_title_usecase.dart';
 
 final sl = GetIt.instance;
 

@@ -1,7 +1,7 @@
 import 'package:clot_shop/common/helper/navigator/app_navigator.dart';
 import 'package:clot_shop/common/widgets/product/product_card.dart';
 import 'package:clot_shop/domain/product/usecases/get_new_in_usecase.dart';
-import 'package:clot_shop/service_locator.dart';
+import 'package:clot_shop/core/services/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

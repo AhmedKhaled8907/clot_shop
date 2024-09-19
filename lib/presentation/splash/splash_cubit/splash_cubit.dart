@@ -1,5 +1,5 @@
 import 'package:clot_shop/domain/auth/usecases/is_logged_in_usecase.dart';
-import 'package:clot_shop/service_locator.dart';
+import 'package:clot_shop/core/services/service_locator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

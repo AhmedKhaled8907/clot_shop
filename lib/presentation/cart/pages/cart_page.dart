@@ -23,7 +23,7 @@ class CartPage extends StatelessWidget {
           title: Text(
             'Cart',
             style: TextStyle(
-              fontSize: 24,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -43,7 +43,6 @@ class CartPage extends StatelessWidget {
                     child: CartListView(entities: state.products),
                   ),
                   PriceCost(products: state.products),
-                  
                 ],
               );
             }
@@ -53,5 +52,4 @@ class CartPage extends StatelessWidget {
       ),
     );
   }
-  
 }

@@ -1,3 +1,4 @@
+import 'package:clot_shop/app_bloc_observer.dart';
 import 'package:clot_shop/core/configs/theme/app_theme.dart';
 import 'package:clot_shop/firebase_options.dart';
 import 'package:clot_shop/presentation/splash/pages/splash.dart';
@@ -13,6 +14,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   serviceLocator();
+  Bloc.observer = AppBlocObserver();
   runApp(const MyApp());
 }
 

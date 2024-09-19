@@ -29,7 +29,7 @@ class AllCategoriesPage extends StatelessWidget {
                 const Text(
                   'Shop by Categories',
                   style: TextStyle(
-                    fontSize: 28,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

@@ -38,7 +38,7 @@ class ProductSizes extends StatelessWidget {
           child: Text(
             'Sizes',
             style: TextStyle(
-              fontSize: 24,
+              fontSize: 22,
               fontWeight: FontWeight.bold,
             ),
           ),

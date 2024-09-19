@@ -1,7 +1,8 @@
-import 'package:clot_shop/core/configs/theme/app_colors.dart';
+import 'package:clot_shop/core/configs/assets/assets.dart';
 import 'package:clot_shop/presentation/settings/pages/favorites_page.dart';
 import 'package:clot_shop/presentation/settings/pages/orders_page.dart';
 import 'package:clot_shop/presentation/settings/pages/user_info_page.dart';
+import 'package:clot_shop/presentation/settings/widgets/settings_card.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common/helper/navigator/app_navigator.dart';
@@ -17,119 +18,82 @@ class SettingsPage extends StatelessWidget {
         title: Text(
           'Settings',
           style: TextStyle(
-            fontSize: 24,
+            fontSize: 20,
             fontWeight: FontWeight.w600,
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 24,
-          horizontal: 16,
-        ),
-        child: Column(
-          children: [
-            _userInfo(context),
-            const SizedBox(height: 16),
-            _favorites(context),
-            const SizedBox(height: 16),
-            _orders(context),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _userInfo(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        AppNavigator.push(context, const UserInfoPage());
-      },
-      child: Container(
-        padding: const EdgeInsets.all(4),
-        decoration: const BoxDecoration(
-          color: AppColors.secondBackground,
-          borderRadius: BorderRadius.all(Radius.circular(8)),
-        ),
-        child: const ListTile(
-          contentPadding: EdgeInsets.symmetric(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
             vertical: 8,
-            horizontal: 12,
+            horizontal: 8,
           ),
-          title: Text(
-            'User Info',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          trailing: Icon(
-            Icons.chevron_right,
-            size: 36,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _favorites(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        AppNavigator.push(context, const FavoritesPage());
-      },
-      child: Container(
-        padding: const EdgeInsets.all(4),
-        decoration: const BoxDecoration(
-          color: AppColors.secondBackground,
-          borderRadius: BorderRadius.all(Radius.circular(8)),
-        ),
-        child: const ListTile(
-          contentPadding: EdgeInsets.symmetric(
-            vertical: 8,
-            horizontal: 12,
-          ),
-          title: Text(
-            'Favorites',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          trailing: Icon(
-            Icons.chevron_right,
-            size: 36,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                child: Image.asset(
+                  Assets.imagesSettingsProfile,
+                  fit: BoxFit.fill,
+                  height: 100,
+                  width: 100,
+                ),
+              ),
+              const SizedBox(height: 16),
+              const UserInfoPage(),
+              const SizedBox(height: 16),
+              SettingsCard(
+                title: 'Address',
+                onTap: () {},
+              ),
+              const SizedBox(height: 8),
+              SettingsCard(
+                title: 'Favorites',
+                onTap: () {
+                  AppNavigator.push(context, const FavoritesPage());
+                },
+              ),
+              const SizedBox(height: 8),
+              SettingsCard(
+                title: 'Orders',
+                onTap: () {
+                  AppNavigator.push(context, const OrdersPage());
+                },
+              ),
+              const SizedBox(height: 8),
+              SettingsCard(
+                title: 'Payment',
+                onTap: () {},
+              ),
+              const SizedBox(height: 8),
+              SettingsCard(
+                title: 'Help',
+                onTap: () {},
+              ),
+              const SizedBox(height: 8),
+              SettingsCard(
+                title: 'Support',
+                onTap: () {},
+              ),
+              const SizedBox(height: 16),
+              const SizedBox(height: 8),
+            ],
           ),
         ),
       ),
-    );
-  }
-
-  Widget _orders(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        AppNavigator.push(context, const OrdersPage());
-      },
-      child: Container(
-        padding: const EdgeInsets.all(4),
-        decoration: const BoxDecoration(
-          color: AppColors.secondBackground,
-          borderRadius: BorderRadius.all(Radius.circular(8)),
-        ),
-        child: const ListTile(
-          contentPadding: EdgeInsets.symmetric(
-            vertical: 8,
-            horizontal: 12,
-          ),
-          title: Text(
-            'Orders',
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: TextButton(
+          onPressed: () {},
+          child: const Text(
+            'Sign Out',
             style: TextStyle(
-              fontSize: 24,
+              color: Colors.redAccent,
+              fontSize: 20,
               fontWeight: FontWeight.w600,
             ),
-          ),
-          trailing: Icon(
-            Icons.chevron_right,
-            size: 36,
           ),
         ),
       ),

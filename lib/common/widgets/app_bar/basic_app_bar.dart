@@ -28,7 +28,10 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       automaticallyImplyLeading: false,
       toolbarHeight: height ?? 80,
-      title: title ?? const Text(''),
+      title: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: title ?? const Text(''),
+      ),
       titleSpacing: 0,
       actions: [action ?? Container()],
       leading: hideBack
@@ -39,15 +42,15 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
                     Navigator.pop(context);
                   },
               icon: Container(
-                height: 50,
-                width: 50,
+                height: 75,
+                width: 75,
                 decoration: const BoxDecoration(
                   color: AppColors.secondBackground,
                   shape: BoxShape.circle,
                 ),
                 child: const Icon(
                   Icons.arrow_back_ios_new,
-                  size: 15,
+                  size: 16,
                   color: Colors.white,
                 ),
               ),

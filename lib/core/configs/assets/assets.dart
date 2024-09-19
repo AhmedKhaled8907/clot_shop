@@ -22,6 +22,10 @@ class Assets {
   /// assets/images/Apple.png
   static const String imagesApple = "assets/images/Apple.png";
 
+  /// Assets for imagesCheckOut
+  /// assets/images/check-out.png
+  static const String imagesCheckOut = "assets/images/check-out.png";
+
   /// Assets for imagesEmptySearch
   /// assets/images/empty_search.png
   static const String imagesEmptySearch = "assets/images/empty_search.png";
@@ -34,17 +38,45 @@ class Assets {
   /// assets/images/google.png
   static const String imagesGoogle = "assets/images/google.png";
 
+  /// Assets for imagesHome
+  /// assets/images/home.png
+  static const String imagesHome = "assets/images/home.png";
+
+  /// Assets for imagesHomeSelected
+  /// assets/images/home_selected.png
+  static const String imagesHomeSelected = "assets/images/home_selected.png";
+
   /// Assets for imagesJacket2
   /// assets/images/jacket_2.png
   static const String imagesJacket2 = "assets/images/jacket_2.png";
+
+  /// Assets for imagesOrder
+  /// assets/images/order.png
+  static const String imagesOrder = "assets/images/order.png";
 
   /// Assets for imagesOrderPlaced
   /// assets/images/order_placed.png
   static const String imagesOrderPlaced = "assets/images/order_placed.png";
 
+  /// Assets for imagesOrderSelected
+  /// assets/images/order_selected.png
+  static const String imagesOrderSelected = "assets/images/order_selected.png";
+
   /// Assets for imagesProfile
   /// assets/images/profile.png
   static const String imagesProfile = "assets/images/profile.png";
+
+  /// Assets for imagesSettingsProfile
+  /// assets/images/settings_profile.png
+  static const String imagesSettingsProfile = "assets/images/settings_profile.png";
+
+  /// Assets for imagesUser
+  /// assets/images/user.png
+  static const String imagesUser = "assets/images/user.png";
+
+  /// Assets for imagesUserSelected
+  /// assets/images/user_selected.png
+  static const String imagesUserSelected = "assets/images/user_selected.png";
 
   /// Assets for vectorsBag
   /// assets/vectors/bag.svg

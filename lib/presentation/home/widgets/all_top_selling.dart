@@ -50,7 +50,7 @@ class AllTopSelling extends StatelessWidget {
                           Text(
                             'Top Selling (${state.products.length})',
                             style: const TextStyle(
-                              fontSize: 24,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

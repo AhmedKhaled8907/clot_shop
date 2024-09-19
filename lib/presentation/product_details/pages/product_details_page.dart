@@ -40,7 +40,7 @@ class ProductDetailsPage extends StatelessWidget {
       child: Scaffold(
         appBar: BasicAppBar(
           action: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: ProductFavoriteButton(
               entity: entity,
               height: 40,

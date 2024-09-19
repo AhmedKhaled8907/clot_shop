@@ -19,7 +19,7 @@ class SeeAllText extends StatelessWidget {
           title,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 24,
+            fontSize: 20,
           ),
         ),
         InkWell(

@@ -50,7 +50,7 @@ class AllNewIn extends StatelessWidget {
                           Text(
                             'New In (${state.products.length})',
                             style: const TextStyle(
-                              fontSize: 24,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

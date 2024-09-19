@@ -21,7 +21,7 @@ class FavoritesPage extends StatelessWidget {
           title: Text(
             'Favorites',
             style: TextStyle(
-              fontSize: 24,
+              fontSize: 20,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -48,7 +48,6 @@ class FavoritesPage extends StatelessWidget {
               );
             }
             if (state is ProductFailure) {
-              // Handling error state
               return const Center(
                 child: Text(
                   'Failed to load products. Please try again.',
@@ -59,7 +58,7 @@ class FavoritesPage extends StatelessWidget {
                 ),
               );
             }
-            return Container(); // Default placeholder in case no state matches
+            return Container(); 
           },
         ),
       ),

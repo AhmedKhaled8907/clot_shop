@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../common/helper/cart/cart_helper.dart';
-import '../../../common/helper/functions/my_validators.dart';
 import '../../../common/helper/navigator/app_navigator.dart';
 import '../../../common/widgets/app_bar/basic_app_bar.dart';
 import 'order_placed_page.dart';
@@ -61,7 +60,7 @@ class _CheckoutState extends State<Checkout> {
             title: Text(
               'Checkout',
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -160,7 +159,7 @@ class _CheckoutState extends State<Checkout> {
       ),
       keyboardType: TextInputType.text,
       validator: (value) {
-        return MyValidators.displayNameValidator(value);
+        return 'Shipping Address can\'t be empty';
       },
       onFieldSubmitted: (value) {
         return FocusScope.of(context).requestFocus(_paymentFocusNode);
@@ -182,7 +181,7 @@ class _CheckoutState extends State<Checkout> {
         ),
       ),
       validator: (value) {
-        return MyValidators.displayNameValidator(value);
+        return 'Payment Method can\'t be empty';
       },
       onFieldSubmitted: (value) {},
     );

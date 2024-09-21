@@ -4,18 +4,16 @@ import 'package:clot_shop/common/widgets/button/basic_reactive_button.dart';
 import 'package:clot_shop/data/auth/models/user_creation_req.dart';
 import 'package:clot_shop/domain/auth/usecases/signup_usecase.dart';
 import 'package:clot_shop/presentation/auth/widgets/ages.dart';
+import 'package:clot_shop/presentation/root/pages/root_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../common/helper/bottom_sheet/app_bottom_sheet.dart';
 import '../../../common/helper/navigator/app_navigator.dart';
 import '../../../core/configs/theme/app_colors.dart';
-import '../../home/pages/home_page.dart';
 import '../bloc/age_selection_cubit/age_selection_cubit.dart';
 import '../bloc/ages_display_cubit/ages_display_cubit.dart';
 import '../bloc/gender_selection_cubit/gender_selection_cubit.dart';
-import '../bloc/image_picker_cubit/image_picker_cubit.dart';
-import '../widgets/register_image.dart';
 
 class AboutYourselfPage extends StatelessWidget {
   final UserCreationReq user;
@@ -33,7 +31,6 @@ class AboutYourselfPage extends StatelessWidget {
         BlocProvider(create: (context) => AgeSelectionCubit()),
         BlocProvider(create: (context) => AgesDisplayCubit()),
         BlocProvider(create: (context) => ButtonStateCubit()),
-        BlocProvider(create: (context) => ImagePickerCubit()),
       ],
       child: Scaffold(
         appBar: const BasicAppBar(),
@@ -61,7 +58,7 @@ class AboutYourselfPage extends StatelessWidget {
                     if (state is ButtonSuccessState) {
                       AppNavigator.push(
                         context,
-                        const HomePage(),
+                        const RootPage(),
                       );
                     }
                   },
@@ -71,10 +68,6 @@ class AboutYourselfPage extends StatelessWidget {
                     children: [
                       _aboutYourselfText(),
                       const SizedBox(height: 36),
-                      _imageText(),
-                      const SizedBox(height: 24),
-                      const RegisterImage(),
-                      const SizedBox(height: 24),
                       _genderText(),
                       const SizedBox(height: 24),
                       _genders(),
@@ -98,7 +91,7 @@ class AboutYourselfPage extends StatelessWidget {
     return const Text(
       'Tell us About yourself',
       style: TextStyle(
-        fontSize: 32,
+        fontSize: 28,
         fontWeight: FontWeight.bold,
       ),
     );
@@ -159,16 +152,6 @@ class AboutYourselfPage extends StatelessWidget {
     );
   }
 
-  Widget _imageText() {
-    return const Text(
-      'Add a profile image',
-      style: TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.w600,
-      ),
-    );
-  }
-
   Widget _ageText() {
     return const Text(
       'How old are you?',
@@ -212,7 +195,7 @@ class AboutYourselfPage extends StatelessWidget {
                 Text(
                   state,
                   style: const TextStyle(
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w600,
                     fontSize: 20,
                   ),
                 ),

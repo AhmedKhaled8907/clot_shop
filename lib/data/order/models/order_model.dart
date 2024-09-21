@@ -1,4 +1,3 @@
-import 'package:clot_shop/data/order/models/order_status_model.dart';
 import 'package:clot_shop/data/order/models/product_ordered_model.dart';
 import 'package:clot_shop/domain/order/entity/order_entity.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -11,7 +10,6 @@ class OrderModel {
   final int itemsCount;
   final double totalPrice;
   final String? code;
-  final List<OrderStatusModel> orderStatus;
 
   OrderModel({
     required this.shippingAddress,
@@ -21,7 +19,6 @@ class OrderModel {
     required this.totalPrice,
     required this.paymentMethod,
     required this.code,
-    required this.orderStatus,
   });
 
   factory OrderModel.fromMap(Map<String, dynamic> map) {
@@ -35,9 +32,7 @@ class OrderModel {
       itemsCount: map['itemsCount'] as int,
       totalPrice: map['totalPrice'] as double,
       code:  map['code'] != null ? map['code'] as String : '456231',
-      orderStatus: List.from(
-        (map['orderStatus']).map((e) => OrderStatusModel.fromMap(e)),
-      ),
+      
     );
   }
 }
@@ -52,7 +47,6 @@ extension OrderXModel on OrderModel {
       itemsCount: itemsCount,
       totalPrice: totalPrice,
       code: code!,
-      orderStatus: orderStatus.map((e) => e.toEntity()).toList(),
     );
   }
 }

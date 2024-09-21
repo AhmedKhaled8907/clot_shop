@@ -1,5 +1,4 @@
 import 'package:clot_shop/core/configs/assets/assets.dart';
-import 'package:clot_shop/presentation/auth/bloc/image_picker_cubit/image_picker_cubit.dart';
 import 'package:clot_shop/presentation/home/bloc/user_info_display_cubit/user_info_display_cubit.dart';
 import 'package:clot_shop/presentation/settings/pages/favorites_page.dart';
 import 'package:flutter/material.dart';
@@ -18,9 +17,6 @@ class Header extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => UserInfoDisplayCubit()..displayUserInfo(),
-        ),
-        BlocProvider(
-          create: (context) => ImagePickerCubit(),
         ),
       ],
       child: BlocBuilder<UserInfoDisplayCubit, UserInfoDisplayState>(

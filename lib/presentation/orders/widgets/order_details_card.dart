@@ -1,3 +1,4 @@
+import 'package:clot_shop/domain/order/entity/order_status_entity.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/configs/theme/app_colors.dart';
@@ -8,15 +9,17 @@ class OrderDetailsCard extends StatelessWidget {
     super.key,
     required this.entity,
     required this.index,
+    required this.statusEntity,
   });
 
+  final OrderStatusEntity statusEntity;
   final OrderEntity entity;
   final int index;
 
   @override
   Widget build(BuildContext context) {
-    bool? done = entity.orderStatus[index].done!;
-
+    ;
+    
     return ListTile(
       contentPadding: EdgeInsets.zero,
       leading: Container(
@@ -24,10 +27,10 @@ class OrderDetailsCard extends StatelessWidget {
         width: 30,
         height: 30,
         decoration: BoxDecoration(
-          color: done ? AppColors.primary : Colors.white,
+          color: statusEntity.done! ? AppColors.primary : Colors.white,
           shape: BoxShape.circle,
         ),
-        child: done
+        child: statusEntity.done!
             ? const Center(
                 child: Icon(
                   Icons.check,
@@ -37,17 +40,17 @@ class OrderDetailsCard extends StatelessWidget {
             : null,
       ),
       title: Text(
-        '${entity.orderStatus[index].title}',
+        '${statusEntity.title}',
         style: TextStyle(
           fontSize: 16,
-          color: done ? Colors.white : Colors.grey,
+          color: statusEntity.done! ? Colors.white : Colors.grey,
           fontWeight: FontWeight.w500,
         ),
       ),
       trailing: Text(
-        entity.orderStatus[index].createdAt!.toDate().toString().split(' ')[0],
+        statusEntity.createdAt!.split(' ')[0],
         style: TextStyle(
-          color: done ? Colors.white : Colors.grey,
+          color: statusEntity.done! ? Colors.white : Colors.grey,
         ),
       ),
     );

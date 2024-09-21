@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../domain/order/entity/order_entity.dart';
+import '../../../domain/order/entity/order_status_entity.dart';
 import 'order_details_card.dart';
 
 class OrderDetailsListView extends StatelessWidget {
@@ -16,12 +17,13 @@ class OrderDetailsListView extends StatelessWidget {
     return ListView.separated(
       shrinkWrap: true,
       physics: const BouncingScrollPhysics(),
-      itemCount: entity.orderStatus.length,
+      itemCount: orderStatusList.length,
       separatorBuilder: (BuildContext context, int index) {
         return const SizedBox(height: 8);
       },
       itemBuilder: (BuildContext context, int index) {
         return OrderDetailsCard(
+          statusEntity: orderStatusList[index],
           entity: entity,
           index: index,
         );

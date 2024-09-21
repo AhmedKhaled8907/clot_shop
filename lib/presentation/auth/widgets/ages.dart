@@ -1,3 +1,4 @@
+import 'package:clot_shop/core/configs/theme/app_colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +12,7 @@ class Ages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height / 2.7,
+      height: MediaQuery.of(context).size.height * 0.5,
       child: BlocBuilder<AgesDisplayCubit, AgesDisplayState>(
         builder: (context, state) {
           if (state is AgesDisplayLoading) {
@@ -40,7 +41,7 @@ class Ages extends StatelessWidget {
 
   Widget _ages(List<QueryDocumentSnapshot<Map<String, dynamic>>> ages) {
     return ListView.separated(
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+      padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
       itemBuilder: (context, index) {
         final ageData = ages[index].data();
         return InkWell(
@@ -51,20 +52,27 @@ class Ages extends StatelessWidget {
                   ageData['value'],
                 );
           },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
-              ageData['value'] ?? 'Unknown',
-              // textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 20),
+          child: ListTile(
+            contentPadding: EdgeInsets.zero,
+            title: Container(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: AppColors.secondBackground,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Text(
+                ageData['value'] ?? 'Unknown',
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ),
           ),
         );
       },
-      separatorBuilder: (context, index) => Divider(
-        color: Colors.grey.shade300,
-        thickness: 0.15,
-      ),
+      separatorBuilder: (context, index) => const SizedBox(height: 0),
       itemCount: ages.length,
     );
   }

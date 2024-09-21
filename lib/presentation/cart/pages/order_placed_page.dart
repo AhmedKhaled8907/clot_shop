@@ -1,10 +1,10 @@
 import 'package:clot_shop/common/widgets/button/basic_app_button.dart';
 import 'package:clot_shop/core/configs/assets/assets.dart';
 import 'package:clot_shop/core/configs/theme/app_colors.dart';
+import 'package:clot_shop/presentation/root/pages/root_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common/helper/navigator/app_navigator.dart';
-import '../../home/pages/home_page.dart';
 
 class OrderPlacedPage extends StatelessWidget {
   const OrderPlacedPage({super.key});
@@ -58,7 +58,7 @@ class OrderPlacedPage extends StatelessWidget {
                   onPressed: () {
                     AppNavigator.pushAndRemove(
                       context,
-                      const HomePage(),
+                      const RootPage(),
                     );
                   },
                   content: const Row(

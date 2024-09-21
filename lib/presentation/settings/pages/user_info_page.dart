@@ -88,7 +88,7 @@ class UserInfoPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 const Text(
-                  '+20-1024-029-330',
+                  '+20-1024-123-330',
                   style: TextStyle(
                     fontSize: 16,
                     color: Colors.grey,

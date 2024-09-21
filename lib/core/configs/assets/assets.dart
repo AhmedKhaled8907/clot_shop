@@ -1,26 +1,22 @@
 // ignore_for_file: prefer_single_quotes
 class Assets {
   Assets._();
-
+  
   /// Assets for fontsCircularStdBlack
   /// assets/fonts/CircularStd-Black.ttf
-  static const String fontsCircularStdBlack =
-      "assets/fonts/CircularStd-Black.ttf";
+  static const String fontsCircularStdBlack = "assets/fonts/CircularStd-Black.ttf";
 
   /// Assets for fontsCircularStdBold
   /// assets/fonts/CircularStd-Bold.ttf
-  static const String fontsCircularStdBold =
-      "assets/fonts/CircularStd-Bold.ttf";
+  static const String fontsCircularStdBold = "assets/fonts/CircularStd-Bold.ttf";
 
   /// Assets for fontsCircularStdMedium
   /// assets/fonts/CircularStd-Medium.ttf
-  static const String fontsCircularStdMedium =
-      "assets/fonts/CircularStd-Medium.ttf";
+  static const String fontsCircularStdMedium = "assets/fonts/CircularStd-Medium.ttf";
 
   /// Assets for fontsCircularStdRegular
   /// assets/fonts/CircularStd-Regular.ttf
-  static const String fontsCircularStdRegular =
-      "assets/fonts/CircularStd-Regular.ttf";
+  static const String fontsCircularStdRegular = "assets/fonts/CircularStd-Regular.ttf";
 
   /// Assets for imagesApple
   /// assets/images/Apple.png
@@ -92,8 +88,7 @@ class Assets {
 
   /// Assets for imagesSettingsProfile
   /// assets/images/settings_profile.png
-  static const String imagesSettingsProfile =
-      "assets/images/settings_profile.png";
+  static const String imagesSettingsProfile = "assets/images/settings_profile.png";
 
   /// Assets for imagesUser
   /// assets/images/user.png
@@ -111,14 +106,17 @@ class Assets {
   /// assets/vectors/cart_bag.svg
   static const String vectorsCartBag = "assets/vectors/cart_bag.svg";
 
+  /// Assets for vectorsCheckOut
+  /// assets/vectors/check-out.svg
+  static const String vectorsCheckOut = "assets/vectors/check-out.svg";
+
   /// Assets for vectorsEmailSending
   /// assets/vectors/email_sending.svg
   static const String vectorsEmailSending = "assets/vectors/email_sending.svg";
 
   /// Assets for vectorsForgotPassword
   /// assets/vectors/forgot_password.svg
-  static const String vectorsForgotPassword =
-      "assets/vectors/forgot_password.svg";
+  static const String vectorsForgotPassword = "assets/vectors/forgot_password.svg";
 
   /// Assets for vectorsHeart
   /// assets/vectors/heart.svg
@@ -140,3 +138,4 @@ class Assets {
   /// assets/vectors/search_bar.svg
   static const String vectorsSearchBar = "assets/vectors/search_bar.svg";
 }
+
